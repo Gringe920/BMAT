@@ -36,7 +36,7 @@
                     <span class="nav-title">{{$t('adr3')}}</span>
                 </div>
             </router-link>
-            <router-link tag="a"   to="/shoukuan">
+            <router-link tag="a"   to="/acceptCoin">
                 <div class="thenav">
                     <img src="../assets/images/transfer_record@2x.png" alt="" srcset=""  >
                     <span class="nav-title">{{$t('lang182')}}</span>

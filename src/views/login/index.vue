@@ -2,28 +2,28 @@
     <div class="container">
         <div class="content">
             <div class="logo">
-                <img src="../../assets/images/qr_logo@2x.png" alt="">
+                <img src="../../assets/images/home_logo@2x.png" alt="">
             </div>
             <div class="login-btn-group">
-                <r-button
+                <!-- <r-button
                         :text="$t('lang7')"
                         bgColor="#FB3B5B"
                         class="setup-addr"
                         width="73.3%"
-                        @comfirm="$router.push({path: '/setupAddr'})"/>
+                        @comfirm="$router.push({path: '/setupAddr'})"/> -->
                 <r-button
-                        :text="$t('lang8')"
-                        bgColor="#00C58F"
+                        :text="$t('lang183')"
+                        bgColor="linear-gradient(270deg,rgba(103,192,216,1) 0%,rgba(26,99,164,1) 100%)"
                         class="export-addr"
                         width="73.3%"
                         @comfirm="$router.push({path: '/importWallet'})"/>
-                <div class="tips">
+                <!-- <div class="tips">
                     <label @click="select">
                         <i :class="{'active': isAllow}"></i>
                         {{$t('lang9')}}
                     </label>
                     <span>{{$t('lang10')}}</span>
-                </div>
+                </div> -->
             </div>
         </div>
         <r-modal :title="$t('lang99')"
@@ -68,7 +68,7 @@
         .logo{
             width: 60%;
             margin: 0 auto;
-            padding-bottom: 33.3%;
+            padding-bottom: 73.3%;
             img{
                 width: 100%;
             }

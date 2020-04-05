@@ -136,7 +136,7 @@
                     document.documentElement.scrollTop ||
                     document.body.scrollTop; //兼容不同的浏览器
                 if (top > 1) {
-                    this.headColor = 'linear-gradient(135deg,rgba(238,125,6,1) 0%,rgba(229,16,18,1) 100%)'
+                    this.headColor = 'linear-gradient(90deg,rgba(103,192,216,1) 0%,rgba(26,99,164,1) 100%);'
                 }
             },
             selectCoin(item){
@@ -240,7 +240,7 @@
                 background-size: 100% 100%;
                 padding: 60px 20px 22.5px;
                 position: relative;
-                background:linear-gradient(135deg,rgba(238,125,6,1) 0%,rgba(229,16,18,1) 100%);
+                background:linear-gradient(90deg,rgba(103,192,216,1) 0%,rgba(26,99,164,1) 100%);;
                 
                 .mine-card-activated {
                     margin-bottom: 15px;

@@ -113,7 +113,7 @@
         text-align: center;
         display: block;
         height:100%;
-        background: linear-gradient(135deg,rgba(238,125,6,1) 0%,rgba(229,16,18,1) 100%);
+        background: linear-gradient(180deg,rgba(103,192,216,1) 0%,rgba(26,99,164,1) 100%);
         box-sizing: border-box;
         .content {
             margin: 50px auto 0 auto;
