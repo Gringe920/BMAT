@@ -1,0 +1,148 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=Edge"><style></style><link type="text/css" href="bundles/vendors.a94ef44ed5c201cefcf6ad7460788c1a.css" rel="stylesheet"/><link type="text/css" href="bundles/library.a8de6f8cf4dda6895071c6ec45f900d9.css" rel="stylesheet"/></head><body class="chart-page on-widget"><div class="loading-indicator" id="loading-indicator"></div><script src="js/external/spin.min.js"></script><script>var JSServer={};var __initialEnabledFeaturesets=["charting_library"];</script><script>(function(){window.urlParams=(function(){var j,h=/\+/g,m=/([^&=]+)=?([^&]*)/g,e=function(o){return decodeURIComponent(o.replace(h," ")).replace(/<\/?[^>]+(>|$)/g,"")},k=function(){var p=location.href;var o=p.indexOf("#");if(o>=0){return p.substring(o+1)}else{throw"Unexpected use of this page"}}(),n={};while(j=m.exec(k)){n[e(j[1])]=e(j[2])}var l=window.parent[n.uid];var i=["datafeed","customFormatters","brokerFactory"];for(var g in l){if(i.indexOf(g)===-1){n[g]=JSON.stringify(l[g])}}return n})();window.locale=urlParams.locale;window.language=urlParams.locale;window.addCustomCSSFile=function(e){var g=document.createElement("link");document.getElementsByTagName("head")[0].appendChild(g);g.setAttribute("type","text/css");g.setAttribute("rel","stylesheet");g.setAttribute("href",e)};if(!!urlParams.customCSS){window.addCustomCSSFile(urlParams.customCSS)}var f={};if(typeof urlParams.loading_screen==="string"){try{f=JSON.parse(urlParams.loading_screen)}catch(d){}}var a=document.getElementById("loading-indicator");if(f.backgroundColor){a.style="background-color: "+f.backgroundColor}var b=(f.foregroundColor)?f.foregroundColor:"#00A2E2";var c=new Spinner({lines:17,length:0,width:3,radius:30,scale:1,corners:1,color:b,opacity:0,rotate:0,direction:1,speed:1.5,trail:60,fps:20,zIndex:2000000000,className:"spinner",top:"50%",left:"50%",shadow:false,hwaccel:false}).spin(a)})();</script><script src="bundles/vendors.e76774664d65ba2c90ff.js"></script><script src="bundles/library.3a1dac88649135c71a7d.js"></script>
+<style>
+    body,html{
+        display: block;
+        /*background: rgb(40, 42, 54) !important;*/
+        background: #272E73 !important;
+    }
+    body,.chart-page,html,.chart-page .chart-container{
+        /*background: rgb(40, 42, 54) !important;*/
+        background: #272E73 !important;
+    }
+    .chart-page,.chart-page .chart-container,.loading-indicator,.js-rootresizer__contents{
+        /*background: rgb(40, 42, 54) !important;*/
+        background: #272E73 !important;
+    }
+    .chart_container-bg{
+        /*background: rgb(40, 42, 54) !important;*/
+        background: #272E73 !important;
+    }
+    body, .chart-controls-bar, #footer-chart-panel {
+        /*background: rgb(40, 42, 54) !important;*/
+        background: #272E73 !important;
+    }
+
+    .layout__area--center,.header-chart-panel{
+        /*background: rgb(40, 42, 54) !important;*/
+        background: #272E73 !important;
+    }
+    .layout__area--left>div{
+        /*background: rgb(40, 42, 54) !important;*/
+        background: #272E73 !important;
+    }
+
+    .header-chart-panel .button{
+        background: transparent;
+        border: none;
+    }
+    .favored-list-container span{
+        background: transparent;
+        border: none;
+    }
+    .header-group-intervals .favored-list-container span{
+        color: #1976d2;
+    }
+    @media screen and (max-width: 1024px) {
+        .header-group-intervals .favored-list-container span{
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+    }
+    @media screen and (max-width: 380px) {
+        .header-group-intervals .favored-list-container span{
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+    }
+    .chart-page .chart-container{
+        left: 0 !important;
+        right: 0 !important;
+        border: none;
+        width: 100% !important;
+        border-top: solid 1px #ccc;
+    }
+    .header-chart-panel .tv-close-panel{
+        /*background-color : #888 !important;*/
+        border-color : #ccc;
+    }
+    .header-group-intervals .favored-list-container span{
+        /*color: #888;*/
+    }
+    .favored-list-container span.active, .favored-list-container span.selected, .feature-no-touch .favored-list-container span:active, .feature-touch .favored-list-container span:active{
+        /*background: transparent;*/
+        /*color: #272E73fff;*/
+    }
+    .favored-list-container span.disabled, .favored-list-container span.disabled.active, .feature-no-touch .favored-list-container span.disabled:active, .feature-touch .favored-list-container span.disabled:active{
+        /*background: transparent;*/
+        /*color: #888;*/
+    }
+    .header-group-intervals .favored-list-container span:last-child{
+        display: none;
+    }
+    .header-group-fullscreen{
+        float: right;
+    }
+    .header-chart-panel .button{
+        padding: 5px 3px;
+        display: block;
+        height: 100%;
+        box-sizing: border-box;
+        font-weight: normal;
+    }
+    @media screen and (min-width: 1024px){
+        .header-chart-panel .button{
+            padding: 5px 10px;
+        }
+    }
+    @media screen and (max-width: 320px){
+        .header-chart-panel .button{
+            padding: 5px 1px;
+        }
+    }
+    .header-chart-panel .button .my-plot{
+        display: block;
+        width: 100%;
+        padding-right: 4px;
+        background: url("./images/k_triangle@2x.png") no-repeat right 90%;
+        background-size: 6px auto;
+    }
+    .header-chart-panel .button .full{
+        display: block;
+        width: 16px;
+        height: 16px;
+        background: url("./images/full_screen@2x.png") no-repeat center center;
+        background-size: 100% 100%;
+    }
+
+    .header-chart-panel .button.over{
+        color: #0CBA71;
+    }
+    .header-chart-panel .button.over:before{
+        height: 2px;
+        position: absolute;
+        content: '';
+        width: 60%;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0CBA71;
+        border-radius: 1px;
+    }
+    .pane-legend{
+        left: 0;
+        top: 0;
+    }
+    .pane-legend-line.pane-legend-wrap.main.expand-line{
+        padding-right: 0;
+        position: absolute;
+        width: 120%;
+        left: 0;
+        top: 0;
+        transform: scale(0.9, 0.9);
+        background: #272E73;
+        transform-origin: 0 0;
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        padding-bottom: 3px;
+    }
+</style>
+</body></html>

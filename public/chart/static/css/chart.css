@@ -1,0 +1,42 @@
+.chart-page,.chart-page .chart-container,.loading-indicator,.js-rootresizer__contents{
+    background: #0a0a0a;
+}
+body, .chart-controls-bar, #footer-chart-panel {
+    background-color: #0a0a0a !important;
+}
+
+.header-chart-panel .button{
+    background: transparent;
+    border: none;
+}
+.favored-list-container span{
+    background: transparent;
+    border: none;
+}
+.header-group-intervals .favored-list-container span{
+    color: #ffffff;
+}
+.chart-page .chart-container{
+    left: auto !important;
+    right: 0;
+    border: none;
+    border-top: solid 1px #404040;
+}
+.header-chart-panel .tv-close-panel{
+    background-color : #888;
+    border-color : #888;
+}
+.header-group-intervals .favored-list-container span{
+    color: #888;
+}
+.favored-list-container span.active, .favored-list-container span.selected, .feature-no-touch .favored-list-container span:active, .feature-touch .favored-list-container span:active{
+    background: transparent;
+    color: #ffffff;
+}
+.favored-list-container span.disabled, .favored-list-container span.disabled.active, .feature-no-touch .favored-list-container span.disabled:active, .feature-touch .favored-list-container span.disabled:active{
+    background: transparent;
+    color: #888;
+}
+.header-group-intervals .favored-list-container span:last-child{
+    display: none;
+}
