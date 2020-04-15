@@ -8,7 +8,7 @@
             </div>
             <div class="info">
                 <div class="name">{{account.accounts.name[account.accounts.addressIndex] || $t('title')}}</div>
-                <div class="uid">{{account.getAddress()}}</div>
+                <div class="uid"> <r-copy :copyText="account.getAddress()">{{account.getAddress()}} <p>({{$t('wallet.shoukuan2')}})</p></r-copy></div>
             </div>
         </div>
         <div class="user-navigation">
@@ -54,7 +54,7 @@
                 </div>
             </div>-->
             <!--<div class="divider"></div>-->
-            <div class="user-nav-item" @click="$router.push({path: '/lang'})">
+            <!--<div class="user-nav-item" @click="$router.push({path: '/lang'})">
                 <i class="icon my_language"></i>
                 <p>{{$t('langSet')}}</p>
                 <div class="turn-right">
@@ -63,7 +63,7 @@
                         }}</span>
                     <i></i>
                 </div>
-            </div>
+            </div>-->
             
             <div class="divider"></div>
             <div class="user-nav-item" @click="$router.push({path: '/accountManage'})">
@@ -177,6 +177,9 @@ export default {
 <style lang="scss" scoped>
 .container{
     min-height: 100vh;
+    .copy-container{
+        color: #fff;
+    }
     .userinfo{
         display: flex;
         align-items: center;

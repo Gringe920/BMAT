@@ -1,0 +1,182 @@
+﻿正式地址：http://54.168.131.210:8000
+临时测试地址:http://18.179.3.69:8000(数据为正式数据，不受IP限制)
+请求方式:get
+条件:
+    1.需要先申请apikey
+    2.提供访问IP
+apikey数据：
+        apiKeyId:1234567890
+        apiKey:aabbccddeeff
+下面的每个功能都需要先申请开通
+====================================================================================================
+1.币币交易数据
+    请求数据：http://54.168.131.210:8000/querytrade?apiKeyId=1234567890&sign=daf6df31ae56045f9f7e499d098afb29&timestamp=1570699607917&betime=2019-10-08T02:54:18.000Z&entime=2019-10-08T02:54:18.000Z
+        请求说明:
+        apiKeyId=1234567890
+        sign=md5(aabbccddeeff+[timestamp])，
+        假如timestamp=1570529274179,那么md5的串是aabbccddeeff1570529274179
+        timestamp:时间戳（UTC）
+        betime:交易的开始时间(UTC)
+        entime:交易的结束时间(UTC)
+        uid:用户uid（可以不传（不要加上uid参数），也可以多个,之间用,分开,单次最多50个以内)
+        phone:用户手机号或邮箱号（可以不传（phone），也可以多个,之间用,分开,单次最多50个以内)
+    返回数据:{"code":0,"data":[{"AId":"213865802","PAId":"202261802","Fee":0.12,"MatchId":"01DPRKZ7RKYVS0RNRHHKAVK2JY","Sym":"BTC/USDT","at":"1570636800107","FeeCoin":"USDT","Sz":1.1254,"Prz":2.01}]}
+        返回说明:
+        code:如果是0表示成功,其它值为失败
+        AId:删除最后二位就是uid,Sz<0时，卖出方,Sz>0时，买入方
+        PAId:删除最后二位就是uid,Sz<0时,买入方,Sz>0时，卖出方
+        Fee:手续费（是aid的手续费）
+        MatchId:成交单号
+        Sym:交易对
+        at:成交时间
+        FeeCoin:手续费币种
+        Sz:成交数量
+        Prz:成交价
+====================================================================================================
+2.查询通过页面支付功能，转到特定帐户的记录
+    请求数据：http://54.168.131.210:8000/querywalletcoin?apiKeyId=1234567890&sign=54ffbe31f9b238116e3555def302c042&timestamp=1570688465299&betime=2019-10-01T02:54:18.000Z&entime=2019-10-08T02:54:18.000Z&uid=12344&coin=BTC
+        请求说明:
+        apiKeyId=1234567890
+        sign=md5(aabbccddeeff+[timestamp])，
+        假如timestamp=1570529274179,那么md5的串是aabbccddeeff1570529274179
+        timestamp:时间戳（UTC）
+        betime:交易的开始时间(UTC)
+        entime:交易的结束时间(UTC)
+        uid:接收的帐户uid(根据用户权限)
+        coin:接收的币种(根据用户权限)
+   返回数据:{"code":0,"data":[{"seq":"20191001031715_67290194","uidFrom":"2140027","uidTo":"2090537","num":"12043.2","mainBal":"0","mainLock":"0","wlt02num":"0","at":"2019-10-01 03:17:15"}]}
+        返回说明:
+        code:如果是0表示成功,其它值为失败
+        seq:订单号
+        uidFrom:转出方uid
+        uidTo:接收方uid
+        num:转帐金额
+        mainBal：转出方的余额
+        mainLock：转出方的锁定余额
+        at:转帐时间
+        wlt02num：转出币币帐户
+====================================================================================================
+3.根据手机号或邮箱查询用户，并返回余额()
+    请求数据：http://54.168.131.210:8000/queryuserwallet?apiKeyId=1234567890&sign=9ef3252c9a156edaec081f3a8d92705a&timestamp=1570681885501&phone=113057306875(渠道所有用户,不再对外提供)
+    请求数据：http://54.168.131.210:8000/queryuserwallet2?apiKeyId=1234567890&sign=9ef3252c9a156edaec081f3a8d92705a&timestamp=1570681885501&phone=113057306875(只有钱包和币币有数据的用户)
+        请求说明:
+        apiKeyId=1234567890
+        sign=md5(aabbccddeeff+[timestamp])，
+        假如timestamp=1570529274179,那么md5的串是aabbccddeeff1570529274179
+        timestamp:时间戳（UTC）
+        phone:手机号码
+        email：邮箱
+        uid:用户uid
+        coin：币种(根据用户权限，如果只有一个币种可以查询时，不需要指定)
+        (注)邮箱和手机必选一个(根据需要权限，此选择不是必须的，也可以全不写时，返回所有)
+   返回数据:{"code":0,"data":[{"uid":"2116165","mainBal":0,"mainLock":0,"coin":"","iStatus":0}]}
+        返回说明:
+        code:如果是0表示成功,其它值为失败
+        mainBal：余额
+        mainLock:锁定余额
+        coin:币种
+        uid:用户id
+        src:0是钱包帐户,1是币币帐户
+        iStatus:认证状态（0-默认，1-提交资料待审核，2-审核失败，9-审核通过，11-提交视频认证，12-视频审核失败，19-视频认证通过，21-xxx认证，22-xxx审核失败，29-xxx审核通过）
+====================================================================================================
+4.查询指定用户的资金变动记录(指定资金变动类型的记录)
+    请求数据：http://54.168.131.210:8000/querywalletlog?apiKeyId=1234567890&sign=10f59db864894f1782eb1fd0f7cb0bf5&coin=BTC&timestamp=1570590746578&uid=2092403
+        请求说明:
+        apiKeyId=1234567890
+        sign=md5(aabbccddeeff+[coin][timestamp])，
+        假如coin=BTC&timestamp=1570529274179,那么md5的串是aabbccddeeffBTC1570529274179
+        timestamp:时间戳（UTC）
+        coin为必输，表示币种(根据权限，限定范围)
+        uid:用户id,必输入
+        betime:开始时间(UTC)
+        entime:结束时间(UTC)
+   返回数据:{"code":0,"data":[{"num":-1,"coin":"BTC","fee":0,"at":"2019-10-08T02:49:26.000Z","info":"outProCoin","mainBal":999999,"peerSeq":"201910081049263A3u","seq":"20191008024926_68645480"}]}
+        返回说明:
+        code:如果是0表示成功,其它值为失败
+        num:变动量
+        fee:手续费
+        at:时间
+        info:类型
+        mainBal:当前余额
+        peerSeq:对应的订单编号
+        seq:资金变动编号
+        coin:币种
+====================================================================================================
+5.查询订单数据
+    请求数据：http://54.168.131.210:8000/queryorder?apiKeyId=1234567890&sign=b67e29a3cd8478857beb4b6722fb65fe&timestamp=1570529274179&info=outProCoin&coin=BTC
+        请求说明:
+        apiKeyId=1234567890
+        sign=md5(aabbccddeeff+[coin][timestamp])，
+        假如coin=BTC&timestamp=1570529274179,那么md5的串是aabbccddeeffBTC1570529274179
+        timestamp:时间戳（UTC）
+        coin为必输，表示币种(根据权限，限定范围)
+        info:订单类型(根据权限，限定范围)
+        stat:表示状态,0表示成功，1表示失败
+        seq:订单编号，可以有
+        betime:开始时间(UTC),可以有
+        entime:结束时间(UTC),可以有
+   返回数据:{"code":0,"data":[{"seq":"20191011123620_1331","coin":"GMNI","num":1544.4,"fee":0,"fee2":0,"uidFrom":"2090537","aTypeFrom":3,"uidTo":"2138733","aTypeTo":3,"at":"2019-10-11T04:36:22.000Z","info":"transfer","stat":0}]}
+        返回说明:
+        code:如果是0表示成功,其它值为失败
+        num:订单量
+        fee:手续费
+        at:时间
+        info:类型
+        uidFrom:转出方uid
+        uidTo:接收方uid
+        seq:编号
+        coin:币种
+        aTypeFrom:转出方类型
+        aTypeTo:转入方类型
+        stat:状态
+====================================================================================================
+6.查询钱包余额
+    请求数据：http://54.168.131.210:8000/getuidwallet?apiKeyId=1234567890&sign=b67e29a3cd8478857beb4b6722fb65fe&timestamp=1570529274179&uid=123456&coin=BTC
+        请求说明:
+        apiKeyId=1234567890
+        sign=md5(aabbccddeeff+[timestamp])，
+        假如timestamp=1570529274179,那么md5的串是aabbccddeeff1570529274179
+        timestamp:时间戳（UTC）
+        coin为必输，表示币种(根据权限，限定范围)
+        uid:用户uid
+   返回数据:{"code":0,"data":[{"uid","123456","coin":"BTC","mainBal":0.21}]}
+        返回说明:
+        code:如果是0表示成功,其它值为失败
+        mainBal:余额
+        coin:币种
+        uid:用户uid
+
+====================================================================================================
+8.查询币币余额
+    请求数据：http://54.168.131.210:8000/querytradewlt2?apiKeyId=1234567890&sign=a0d934f7ee7ee80bceb4f2da606baa20&timestamp=1570788184662&coin=BTC&uid=2019296,2019601
+        请求说明:
+        apiKeyId=1234567890
+        sign=md5(aabbccddeeff+[timestamp])，
+        假如timestamp=1570529274179,那么md5的串是aabbccddeeff1570529274179
+        timestamp:时间戳（UTC）
+        coin表示币种(根据权限，限定范围)
+        uid:用户uid（可以不传（不要加上uid参数），也可以多个,之间用,分开,单次最多50个以内)
+   返回数据:{"code":0,"data":[{"num":0.122,"uid":"123344","coin":"BTC"}]}
+        返回说明:
+        code:如果是0表示成功,其它值为失败
+        uid:用户uid
+        num:余额
+        coin:币种
+====================================================================================================
+9.查询币币合约钱包某个币种余额
+    请求数据：http://54.168.131.210:8000/querytuidwlttotal?apiKeyId=1234567890&sign=a0d934f7ee7ee80bceb4f2da606baa20&timestamp=1570788184662&coin=BTC&uid=2019296,2019601
+        请求说明:
+        apiKeyId=1234567890
+        sign=md5(aabbccddeeff+[timestamp])，
+        假如timestamp=1570529274179,那么md5的串是aabbccddeeff1570529274179
+        timestamp:时间戳（UTC）
+        coin表示币种(根据权限，限定范围)
+        uid:用户uid（可以不传（不要加上uid参数），也可以多个,之间用,分开,单次最多50个以内)
+   返回数据:{"code":0,"data":[{"num":0.122,"uid":"123344","coin":"BTC"}]}
+        返回说明:
+        code:如果是0表示成功,其它值为失败
+        uid:用户uid
+        num:余额
+        coin:币种
+====================================================================================================
+
