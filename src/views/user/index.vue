@@ -11,14 +11,14 @@
             </div>
         </div>
         <div class="user-navigation">
-            <div class="user-nav-item" @click="clickInvite">
+            <!--<div class="user-nav-item" @click="clickInvite">
                 <i class="icon my_activation"></i>
                 <p>{{$t('adr20')}}</p>
                 <div class="turn-right">
                     <span>{{invite.length ? $t(`home.home13`) : isjihuo ? $t(`home.home12`) : $t(`home.home6`)}}</span>
                     <i></i>
                 </div>
-            </div>
+            </div>-->
             <!--<div class="divider"></div>
             <div class="user-nav-item" v-if="Number(lock_asset) > 0">
                 <i class="icon my_lock"></i>
@@ -28,7 +28,7 @@
                     <i></i>
                 </div>
             </div>-->
-            <div class="divider"></div>
+            <!--<div class="divider"></div>
             <div class="user-nav-item" @click="$router.push({path: '/invite'})">
                 <i class="icon my_account"></i>
                 <p>{{$t('inviteTitle')}}</p>
@@ -51,8 +51,8 @@
                 <div class="turn-right">
                     <i></i>
                 </div>
-            </div>
-            <div class="divider"></div>
+            </div>-->
+            <!--<div class="divider"></div>-->
             <div class="user-nav-item" @click="$router.push({path: '/lang'})">
                 <i class="icon my_language"></i>
                 <p>{{$t('langSet')}}</p>

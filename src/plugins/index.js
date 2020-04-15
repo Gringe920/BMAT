@@ -166,6 +166,7 @@ Vue.mixin({
             });
         },
         getMarket (){
+            return;
             this.axios({
                 url: process.env.NODE_ENV == 'development' ? "/service/quote" : 'https://trading.adrchain.org/service/quote',
                 params: {

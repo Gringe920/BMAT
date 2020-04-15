@@ -1,7 +1,8 @@
 <template>
     <div class="home">
         <Header :title="$t(`home.home`)"
-                :leftShow='false'
+                :leftEv="clickMy"
+                :leftIcon="require('../assets/images/my@2x(2).png')"
                  ></Header>
 
         <section class="banner">
