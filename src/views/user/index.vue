@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <Header :title="$t('my')"/>
         <div class="userinfo">
             <div class="avatar">
                 <!--<img src="../../assets/images/my_head@2x.png" alt="">-->
@@ -179,7 +180,7 @@ export default {
     .userinfo{
         display: flex;
         align-items: center;
-        padding: 40px 15px;
+        padding: 90px 15px 40px;
         background: linear-gradient(135deg, #67C0D8 0%, #1A63A4 100%);
         .avatar{
             width: 17.3%;
@@ -198,7 +199,7 @@ export default {
             }
             .uid{
                 font-size: 12px;
-                color: #FFB2BF;
+                color: #b2d1ff;
             }
         }
     }

@@ -29,7 +29,7 @@
             </div>
 
             <div class="account-import" v-if="!editMode" @click="$router.push({path: '/exportAddr'})">
-                <i></i>
+                <!-- <i></i> -->
                 {{$t('importAddress')}}
             </div>
         </div>
