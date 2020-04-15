@@ -248,7 +248,7 @@
                     && this.$route.name !='login'
                     && this.$route.name != 'setupAddr'
                     && this.$route.name != 'importWallet' )){
-                    this.toRoute('/login');
+                    //this.toRoute('/login');
                     setTimeout(() => {
                         this.$store.commit('nav3DState', false);
                     }, 3000);

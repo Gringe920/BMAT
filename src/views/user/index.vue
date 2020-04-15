@@ -81,7 +81,7 @@
                 </div>
             </div>-->
             <div class="user-nav-item" @click="clickGit('http://www.adrads.net')">
-                <i class="icon my_activation"></i>
+                <i class="icon my_website"></i>
                 <p>{{$t('adr12')}}</p>
                 <div class="turn-right">
                     <span>http://www.adrads.net</span>
@@ -90,7 +90,7 @@
             <div class="divider"></div>
 
             <div class="user-nav-item" @click="$router.push({path: '/explorer'})">
-                <i class="icon my_share"></i>
+                <i class="icon my_block_chain"></i>
                 <p>{{$t('lang140')}}</p>
                 <div class="turn-right">
                     <span>https://explorer.adrchain.org</span>
@@ -106,7 +106,7 @@
             </div>
             <div class="divider"></div>-->
             <div class="user-nav-item" @click="clickGit('https://github.com/Adr-official/adr')">
-                <i class="icon my_activation"></i>
+                <i class="icon my_code"></i>
                 <p>{{$t('lang142')}}</p>
                 <div class="turn-right">
                     <span>https://github.com/Adr-official/adr</span>
@@ -180,7 +180,7 @@ export default {
         display: flex;
         align-items: center;
         padding: 40px 15px;
-        background: linear-gradient(135deg, #FF6780 0%, #FB3B5B 100%);
+        background: linear-gradient(135deg, #67C0D8 0%, #1A63A4 100%);
         .avatar{
             width: 17.3%;
             margin-right: 20px;
@@ -215,8 +215,8 @@ export default {
             
             i.icon{
                 display: inline-block;
-                width: 31px;
-                height: 31px;
+                width: 22px;
+                height: 22px;
                 background-size: 100% 100%;
                 margin-right: 7px;
             }
@@ -240,6 +240,15 @@ export default {
             }
             .my_account{
                 background-image: url('../../assets/images/my_account@2x.png');
+            }
+            .my_website{
+                background-image: url('../../assets/images/my_website@2x.png');
+            }
+            .my_block_chain{
+                background-image: url('../../assets/images/my_block_chain@2x.png');
+            }
+            .my_code{
+                background-image: url('../../assets/images/my_code@2x.png');
             }
             p{
                 font-size: 14px;
