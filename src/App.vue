@@ -48,9 +48,9 @@
                 </div>
             </a> -->
         </div>
-        <trust-btc v-if="isTrustBtc"></trust-btc>
-        <nav3-d class="nav3D" v-if="nav3DState"></nav3-d>
-        <guide v-if="guide == 0"></guide>
+        <!--<trust-btc v-if="isTrustBtc"></trust-btc>-->
+        <!--<nav3-d class="nav3D" v-if="nav3DState"></nav3-d>-->
+        <!--<guide v-if="guide == 0"></guide>-->
         <!--<guide></guide>-->
     </div>
 </template>
@@ -58,11 +58,11 @@
     import { mapState } from "vuex";
     import Binding from "./components/binding";
     import TrustBtc from "./components/trustBtc";
-    import Nav3D from "./views/nav3D";
-    import Guide from "./components/guide";
+    // import Nav3D from "./views/nav3D";
+    // import Guide from "./components/guide";
     export default {
         name: "app",
-        components: {Guide, Nav3D, TrustBtc, Binding},
+        components: {TrustBtc, Binding},
         data() {
             return {
                 routeList: ['home', 'wallet', 'dapp', 'user', 'trade', 'market'],

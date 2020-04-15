@@ -1,9 +1,9 @@
 <template>
     <section class="guide">
         <span class="skip" @click="close"></span>
-        <video v-if="videoState"  id="video5" autoplay muted src="../assets/ADRmp4.mp4" :class="{show : showState}">
-            Sorry, your browser doesn't support embedded videos.
-        </video>
+        <!--<video v-if="videoState"  id="video5" autoplay muted src="../assets/ADRmp4.mp4" :class="{show : showState}">-->
+            <!--Sorry, your browser doesn't support embedded videos.-->
+        <!--</video>-->
         <section v-if="videoState && showState" class="video-bg"></section>
         <div class="swiper-container2">
             <div class="swiper-wrapper">
