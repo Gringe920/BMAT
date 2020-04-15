@@ -68,9 +68,9 @@
                 <div class="text4">≈ {{getCurrencyPrice(item)}} {{moneyUnit}}</div>
             </div>
         </div> -->
-        <div class='earningstitle'>{{$t('adr7')}}</div>
+        <div class='earningstitle'>{{$t('home.home1')}}</div>
         <section class="earnings">
-            <h4>{{ !hidden? $t('adr8') : $t('lang26')}}</h4>
+            <h4> </h4>
             <div>
                 <span>{{toFixedNumber(balancesXRP.value, 4) || '-'}}</span> {{$t('title')}}
                 <p>≈ {{toFixedNumber(decimal.mul((balancesXRP.value || 0), moneyConvert), 2)}} {{moneyUnit}}</p>
