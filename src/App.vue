@@ -76,10 +76,9 @@
                 this.loginPage();
             },
             connected (){
-                this.loginPage();
+                // this.loginPage();
             },
             gmex_phrase (n, o){
-                this.loginPage();
                 let p = this.account.RSADecryptPublic(this.gmex_pwd);
                 // console.log(this.gmex_pwd, p);
                 n.forEach(item =>{
@@ -87,6 +86,7 @@
                     let m = this.account.RSADecryptPublic(item);
                     this.account.importMnemonic(m, p);
                 });
+                this.loginPage();
             },
         },
         methods: {
@@ -256,7 +256,8 @@
                         this.$store.commit('nav3DState', false);
                     }, 3000);
                 }
-                if((this.gmex_phrase.length <= 0) && (this.$route.name !='download'
+                console.log(this.gmex_uid);
+                if(this.gmex_uid == '' && (this.$route.name !='download'
                     && this.$route.name !='login'
                     && this.$route.name != 'setupAddr'
                     && this.$route.name != 'importWallet' )){

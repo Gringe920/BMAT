@@ -1,6 +1,6 @@
 <template>
     <section class="dig-mine">
-        <Header :title="$t('lang104')"  :leftIcon="require('../../assets/images/top_return_white@2x.png')"  />
+        <Header :title="$t('lang104')"  />
         <!--  -->
         <!--<div class="coin">{{coin}}</div>-->
         <div class="mine-card-info">
