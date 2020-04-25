@@ -12,11 +12,11 @@
                         width="73.3%"
                         @comfirm="$router.push({path: '/setupAddr'})"/> -->
                 <r-button
-                        :text="$t('lang183')"
+                        :text="$t('bmat1')"
                         bgColor="linear-gradient(270deg,rgba(103,192,216,1) 0%,rgba(26,99,164,1) 100%)"
                         class="export-addr"
                         width="73.3%"
-                        @comfirm="$router.push({path: '/importWallet'})"/>
+                        @comfirm="$router.push({path: '/setupAddr'})"/>
                 <!-- <div class="tips">
                     <label @click="select">
                         <i :class="{'active': isAllow}"></i>

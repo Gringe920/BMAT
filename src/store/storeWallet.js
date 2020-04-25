@@ -53,8 +53,13 @@ function getBase (){
         Store.commit('adAddress', res.data.ad_cn_address || "");
         Store.commit('rcp_info', res.data || {});
 
+        if(/https/.test(location.href)){
+            rcp.option.server = 'wss://s-hk.bmatoken.org';
+        }else{
+            rcp.option.server = res.data.rcp_ws || 'ws://s-hk.bmatoken.org';
+        }
         // rcp_ws
-        rcp.option.server = res.data.rcp_ws || 'wss://wss1.adrchain.org';
+
         // rcp.option.server = 'wss://wss2.adrchain.org';
 
         rcp.connect();
@@ -77,11 +82,13 @@ function getBase (){
 
 
 // /service/login_info?address=rLRYTN7ovVayaqk7ksRDLyySw2hZP6L5cy
+// http://wallet.bmatoken.org/?channel=14&access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIyMjE0OTU0IiwiaWF0IjoxNTg3NzIyNjU1LCJleHAiOjE1ODc3MjQ0NTV9.HPtaj9nDEFTv1pEl_SATMqY2tY6TObX7LTL9t4530WA&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiIyMDE5MTAwNiIsInVpZCI6IjIyMTQ5NTQiLCJpYXQiOjE1ODc3MjI2NTUsImV4cCI6MTU4NzcyOTg1NX0.E6uILpGnIweE8VNWnBsxK8VfvPiIrlX-B2La27_XTtA#/login
 function getAddressInfo() {
     axios({
         url : "/service/login_info",
         params : {
-            address : account.getAddress()
+            access_token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIyMjE0OTU0IiwiaWF0IjoxNTg3NzIyNjU1LCJleHAiOjE1ODc3MjQ0NTV9.HPtaj9nDEFTv1pEl_SATMqY2tY6TObX7LTL9t4530WA',
+            refresh_token : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOiIyMDE5MTAwNiIsInVpZCI6IjIyMTQ5NTQiLCJpYXQiOjE1ODc3MjI2NTUsImV4cCI6MTU4NzcyOTg1NX0.E6uILpGnIweE8VNWnBsxK8VfvPiIrlX-B2La27_XTtA'
         }
     }).then(res => {
         // console.log(res);
@@ -94,6 +101,9 @@ function getAddressInfo() {
         Store.commit('lock_node_asset', res.data.lock_node_asset || "");
         Store.commit('inviteX', res.data.inviter_code_x || "");
         Store.commit('inviteY', res.data.inviter_code_y || "");
+        Store.commit('gmex_uid', res.data.gmex_uid || "");
+        Store.commit('gmex_pwd', res.data.gmex_phrase_pwd || "");
+        Store.commit('gmex_phrase', res.data.gmex_phrase || []);
     }).catch(e => {
         console.log(e.message);
         Store.commit('usdt_erc20', "");
@@ -104,6 +114,9 @@ function getAddressInfo() {
         Store.commit('invite', "");
         Store.commit('inviteX',  "");
         Store.commit('inviteY', "");
+        Store.commit('gmex_uid', "");
+        Store.commit('gmex_phrase', []);
+        Store.commit('gmex_pwd', "");
         // setTimeout(getAddressInfo, timeOut);
     });
 }
@@ -161,7 +174,7 @@ function upData(ledger) {
     };
     rcp.address = account.getAddress();
     getPrice();
-    getAddressInfo();
+    // getAddressInfo();
     //
     // console.log(rcp.address);
     // console.log(rcp.option);

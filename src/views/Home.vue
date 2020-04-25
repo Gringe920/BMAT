@@ -50,24 +50,6 @@
                 </div>
             </router-link>
         </div>
-        
-        <!-- <div class="coininfosbox">
-            <div class="itembox" v-for="item in mainMarket" :key="item.v" @click="clickTrade(item)">
-                <div class="text1">{{unitCoin(item.left.currency)}}/{{unitCoin(item.right.currency)}}</div>
-                <div class="text2 up">{{toFixedNumber(item.price, 4) || '-'}} {{unitCoin(item.right.currency)}}</div>
-                <div class="text4">≈ {{getCurrencyPrice(item)}} {{moneyUnit}}</div>
-            </div>
-            <div class="itembox" v-if="mainMarket.length <= 2" v-for="item in mainMarket" @click="clickTrade(item)">
-                <div class="text1">{{unitCoin(item.left.currency)}}/{{unitCoin(item.right.currency)}}</div>
-                <div class="text2 up">{{toFixedNumber(item.price, 4) || '-'}} {{unitCoin(item.right.currency)}}</div>
-                <div class="text4">≈ {{getCurrencyPrice(item)}} {{moneyUnit}}</div>
-            </div>
-            <div class="itembox" v-if="mainMarket.length <= 1" v-for="item in mainMarket" @click="clickTrade(item)">
-                <div class="text1">{{unitCoin(item.left.currency)}}/{{unitCoin(item.right.currency)}}</div>
-                <div class="text2 up">{{toFixedNumber(item.price, 4) || '-'}} {{unitCoin(item.right.currency)}}</div>
-                <div class="text4">≈ {{getCurrencyPrice(item)}} {{moneyUnit}}</div>
-            </div>
-        </div> -->
         <div class='earningstitle'>{{$t('home.home1')}}</div>
         <section class="earnings">
             <h4> </h4>
@@ -76,32 +58,6 @@
                 <p>≈ {{toFixedNumber(decimal.mul((balancesXRP.value || 0), moneyConvert), 2)}} {{moneyUnit}}</p>
             </div>
         </section>
-        <!-- <section class="markets">
-            <div class="title">{{$t('adr9')}}</div>
-            <ul class="market-menu">
-                <li @click="clickMarketMenu(0)" :class="{active : marketMenuActive == 0}"><span>{{$t('lang28')}}</span></li>
-                <li @click="clickMarketMenu(1)" :class="{active : marketMenuActive == 1}"><span>{{$t('lang29')}}</span></li>
-                <li @click="clickMarketMenu(2)" :class="{active : marketMenuActive == 2}"><span>{{$t('lang30')}}</span></li>
-            </ul>
-            <ul class="market-menu market-coin" v-if="coinList.length >= 2" >
-                <li @click="clickQuoteCoin(item)" :class="{active : quoteCoin == item}" v-for="item in coinList" :key="item"><span>{{item.toUpperCase()}}</span></li>
-            </ul>
-            <div class="markebox" v-for="item in marketList" v-if="marketList.length > 0" :key="item.v" @click="clickTrade(item)">
-                <div class="le">
-                    <div class="top">{{unitCoin(item.left.currency)}}<span>/{{unitCoin(item.right.currency)}}</span></div>
-                    <div class="last">24h&nbsp;{{item.v || '-'}}</div>
-                </div>
-                <div class="cen">
-                    <div class="top">{{toFixedNumber(item.price, 4) || '-'}}</div>
-                    <div class="last">≈ {{getCurrencyPrice(item)}} {{moneyUnit}}</div>
-                </div>
-                <div class="rig">
-                    <div class="bt" :class="item.ttm * 1 >= 0 ? 'sellbg' : 'buybg'">{{item.ttm}}%</div>
-                </div>
-            </div>
-            <empty v-if="marketList.length <= 0"></empty>
-        </section> -->
-        <!-- benifit -->
         <div class="last-week-profit calc-power-group">
             <div class="icon-subtitle">
                 <i class="icon"></i>

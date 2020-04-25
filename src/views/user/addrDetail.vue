@@ -6,10 +6,10 @@
                 <span>{{$t('lang32')}}</span>
                 <i></i>
             </div>
-            <div class="detail-row" @click="mnemonicWord" v-if="address == account.accounts.address[0] && account.accounts.backups == false">
-                <span>{{$t('backups') + $t('address')}}</span>
-                <i></i>
-            </div>
+            <!--<div class="detail-row" @click="mnemonicWord" v-if="address == account.accounts.address[0] && account.accounts.backups == false">-->
+                <!--<span>{{$t('backups') + $t('address')}}</span>-->
+                <!--<i></i>-->
+            <!--</div>-->
             <!--<div class="detail-row" @click="exportMnemonic" v-if="address == account.accounts.address[0]">-->
                 <!--<span>{{$t('export') + $t('mnemonic')}}</span>-->
                 <!--<i></i>-->

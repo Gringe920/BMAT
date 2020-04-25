@@ -42,6 +42,9 @@ Vue.mixin({
             'quote',
             'newTradeQuote',
             'lock_node_asset',
+            'gmex_uid',
+            'gmex_phrase',
+            'gmex_pwd',
         ])
     },
 });
@@ -56,6 +59,7 @@ let adAddress = 'rabp6QeFztgCXvjtrz7MuENAbSGxSMH5WQ';
 let guide = 0;
 let Store = new Vuex.Store({
     state: {
+        gmex_phrase : [],  // 行情
         newTradeQuote : {},  // 行情
         quote : {},  // 行情
         rcp_info : {},  // rcp_info  rcp 系统相关地址
@@ -65,12 +69,14 @@ let Store = new Vuex.Store({
         btcDepositAddress : "", // BTC 充币地址
         ust_gateway_address : "", // USDT 网关
         invite : "",
+        gmex_pwd : "",
         lock_asset : "",
         pas : "",
         lock_node_asset : 0,
         tradePrice : 0,
         newPrice : 0,
         usdt_omni : "",
+        gmex_uid : "",
         usdt_erc20 : "",
         inviteX : "",
         inviteY : "",
@@ -107,6 +113,15 @@ let Store = new Vuex.Store({
         }
     },
     mutations: {
+        gmex_pwd (state, data) {
+            state.gmex_pwd = data;
+        },
+        gmex_phrase (state, data) {
+            state.gmex_phrase = data;
+        },
+        gmex_uid (state, data) {
+            state.gmex_uid = data;
+        },
         lock_node_asset (state, data) {
             state.lock_node_asset = data;
         },

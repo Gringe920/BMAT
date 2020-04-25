@@ -30,28 +30,29 @@ module.exports = {
     assetsDir: appState ? "./" : "static",
     productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
     devServer: {
+        port: 8888,
         proxy: {
             // '/service/price_info': {
             //     target: 'http://192.168.0.110:9002/',
             //     secure: false,
             //     changeOrigin: true,
             //     pathRewrite: {}
+            // // },
+            // '/service/quote': {
+            //     target: 'https://trading.adrchain.org/',
+            //     secure: false,
+            //     changeOrigin: true,
+            //     pathRewrite: {}
             // },
-            '/service/quote': {
-                target: 'https://trading.adrchain.org/',
-                secure: false,
-                changeOrigin: true,
-                pathRewrite: {}
-            },
-            '/service/kline': {
-                target: 'https://trading.adrchain.org/',
-                secure: false,
-                changeOrigin: true,
-                pathRewrite: {}
-            },
+            // '/service/kline': {
+            //     target: 'https://trading.adrchain.org/',
+            //     secure: false,
+            //     changeOrigin: true,
+            //     pathRewrite: {}
+            // },
             '/service': {
                 // target: 'http://47.240.110.55:9003/',
-                target: 'https://api.adrchain.org/',
+                target: 'http://api.bmatoken.org/',
                 secure: false,
                 changeOrigin: true,
                 pathRewrite: {}

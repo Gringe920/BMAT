@@ -1,8 +1,8 @@
 <template>
     <section class="dig-mine">
-        <Header :title="$t('lang104')" :rightEv='toacceptCoin' titleColor="#fff" :color="headColor" :leftIcon="require('../../assets/images/top_return_white@2x.png')" :rightIcon="require('../../assets/images/transaction_list_upper_white@2x.png')" />
+        <Header :title="$t('lang104')"  :leftIcon="require('../../assets/images/top_return_white@2x.png')"  />
         <!--  -->
-        <div class="coin">{{coin}}</div>
+        <!--<div class="coin">{{coin}}</div>-->
         <div class="mine-card-info">
             <!-- 激活 -->
             <div class="mine-card-activated" v-if="item.acitve_wk">
