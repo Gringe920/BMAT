@@ -257,7 +257,7 @@
                     }, 3000);
                 }
                 console.log(this.gmex_uid);
-                if(this.gmex_uid == '' && (this.$route.name !='download'
+                if(this.gmex_phrase.length <= 0 && (this.$route.name !='download'
                     && this.$route.name !='login'
                     && this.$route.name != 'setupAddr'
                     && this.$route.name != 'importWallet' )){

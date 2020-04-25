@@ -75,6 +75,8 @@
                         }).then(res => {
                             this.submitState = false;
                             this.$toast.show(this.$t('bmat2'));
+                            this.$store.commit('gmex_pwd', pwd);
+                            this.$store.commit('gmex_phrase', [phrase]);
                             // console.log(res);
                             this.$router.push('/home');
                         }).catch(e => {
