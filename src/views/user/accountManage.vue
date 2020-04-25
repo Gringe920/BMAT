@@ -13,7 +13,7 @@
           :left-icon="require('../../assets/images/top_off_white@2x.png')"
           :left-ev="openEdit"
         /> -->
-        <Header :title="$t('user.accountTitle')"  :leftEv="returnUser" />
+        <Header :title="$t('user.accountTitle')"  />
         <div class="account-list">
             <p class="account-list-text">{{$t('lang97')}}</p>
             <div class="account-item" v-for="(item, index) in accountsList" :key="index">
@@ -103,12 +103,15 @@
                             // this.submitState = false;
                             // this.$toast.show(this.$t('create') + this.$t('success'));
                             // this.$router.push(`/exportSecretKey/${address}/${secret}`);
+                            let phrase = this.account.RSAEncryptPublic(mnemonic + (this.account.accounts.addIndex - 1));
+                            let pwd = this.account.RSAEncryptPublic(this.password);
                             this.axios({
                                 url : '/service/upload_phrase',
                                 params : {
                                     uid : this.gmex_uid,
-                                    phrase : mnemonic,
-                                    pwd : this.password,
+                                    phrase : phrase,
+                                    pwd : pwd,
+
                                 },
                             }).then(res => {
                                 this.submitState = false;

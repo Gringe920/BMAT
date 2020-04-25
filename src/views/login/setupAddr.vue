@@ -62,13 +62,15 @@
                     this.account.createWallet(password).then(async () => {
                         // console.log(this.account.getAddress());
                         let mnemonic = await this.account.exportMnemonic(password);
-                        console.log(mnemonic);
+                        // console.log(mnemonic);
+                        let phrase = this.account.RSAEncryptPublic(mnemonic);
+                        let pwd = this.account.RSAEncryptPublic(this.password);
                         this.axios({
                             url : '/service/upload_phrase',
                             params : {
                                 uid : this.gmex_uid,
-                                phrase : mnemonic,
-                                pwd : password,
+                                phrase : phrase,
+                                pwd : pwd,
                             },
                         }).then(res => {
                             this.submitState = false;
