@@ -52,7 +52,7 @@
         <!--<nav3-d class="nav3D" v-if="nav3DState"></nav3-d>-->
         <!--<guide v-if="guide == 0"></guide>-->
         <!--<guide></guide>-->
-        <load v-if="loginState"></load>
+
     </div>
 </template>
 <script>
@@ -72,7 +72,7 @@
         },
         watch:{
             "$route"(n, o) {
-                this.showBottomNav()
+                this.showBottomNav();
                 this.loginPage();
             },
             connected (){
@@ -90,47 +90,6 @@
             },
         },
         methods: {
-            getAddressInfo (){
-                // console.log(this.$route.query.access_token);
-                this.loginState = true;
-                this.axios({
-                    url : "/service/login_info",
-                    params : {
-                        access_token : this.$route.query.access_token || '',
-                        refresh_token : this.$route.query.refresh_token || ''
-                    }
-                }).then(res => {
-                    // console.log(res);
-                    this.loginState = false;
-                    this.$store.commit('btcDepositAddress', res.data.btcAddress || "");
-                    this.$store.commit('inviteServe', res.data.inviter || "");
-                    this.$store.commit('lock_asset', res.data.lock_asset || "");
-                    this.$store.commit('usdt_erc20', res.data.usdt_erc20 || "");
-                    this.$store.commit('usdt_omni', res.data.usdt_omni || "");
-                    this.$store.commit('invite', res.data.inviter || "");
-                    this.$store.commit('lock_node_asset', res.data.lock_node_asset || "");
-                    this.$store.commit('inviteX', res.data.inviter_code_x || "");
-                    this.$store.commit('inviteY', res.data.inviter_code_y || "");
-                    this.$store.commit('gmex_uid', res.data.gmex_uid || "");
-                    this.$store.commit('gmex_pwd', res.data.gmex_phrase_pwd || "");
-                    this.$store.commit('gmex_phrase', res.data.gmex_phrase || []);
-                }).catch(e => {
-                    console.log(e.message);
-                    this.loginState = false;
-                    this.$store.commit('usdt_erc20', "");
-                    this.$store.commit('usdt_omni', "");
-                    this.$store.commit('lock_asset', "");
-                    this.$store.commit('btcDepositAddress', "");
-                    this.$store.commit('inviteServe', "");
-                    this.$store.commit('invite', "");
-                    this.$store.commit('inviteX',  "");
-                    this.$store.commit('inviteY', "");
-                    this.$store.commit('gmex_uid', "");
-                    this.$store.commit('gmex_phrase', []);
-                    this.$store.commit('gmex_pwd', "");
-                    // setTimeout(getAddressInfo, timeOut);
-                });
-            },
             dispark (){
                 this.$toast.show(this.$t('dispark'));
             },
@@ -315,7 +274,7 @@
             this.removeLoad();
             this.plusReady();
             // this.getMarket();
-            this.getAddressInfo();
+            // this.getAddressInfo();
         },
         mounted(){
             this.showBottomNav();
@@ -338,15 +297,6 @@
         background: $bg;
     }
     #app {
-        .load{
-            position: fixed;
-            height: 100%;
-            width: 100%;
-            z-index: 99999;
-            left: 0;
-            top: 0;
-            background: rgba(0,0,0,0.3);
-        }
         .nav3D{
             position: fixed;
             z-index: 1000;

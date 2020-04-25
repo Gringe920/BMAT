@@ -66,6 +66,7 @@
             <div class="divider"></div>
             <canvas class="chart-7Day"></canvas>
         </div>
+        <load v-if="gmex_uid == '' || loginState"></load>
     </div>
 </template>
 
@@ -78,6 +79,7 @@
         name: "home",
         data() {
             return {
+                loginState: false,
                 hidden: false,
                 isShowPswModal: false,
                 swiper: null,
@@ -110,6 +112,9 @@
                 this.marketMenuChange();
             }
             this.getData();
+            setTimeout(() => {
+                this.getAddressInfo();
+            }, 500);
         },
         destroyed() {
             if(this.swiper){
@@ -120,6 +125,50 @@
             }
         },
         methods: {
+            getAddressInfo (){
+                if(this.gmex_uid) return;
+                this.loginState = true;
+                let params = new URLSearchParams(document.location.search.substring(1));
+                let access_token = params.get("access_token") || ''; // is th
+                let refresh_token = params.get("refresh_token") || ''; // is th
+                this.axios({
+                    url : "/service/login_info",
+                    params : {
+                        access_token : access_token,
+                        refresh_token : refresh_token
+                    }
+                }).then(res => {
+                    // console.log(res);
+                    this.loginState = false;
+                    this.$store.commit('btcDepositAddress', res.data.btcAddress || "");
+                    this.$store.commit('inviteServe', res.data.inviter || "");
+                    this.$store.commit('lock_asset', res.data.lock_asset || "");
+                    this.$store.commit('usdt_erc20', res.data.usdt_erc20 || "");
+                    this.$store.commit('usdt_omni', res.data.usdt_omni || "");
+                    this.$store.commit('invite', res.data.inviter || "");
+                    this.$store.commit('lock_node_asset', res.data.lock_node_asset || "");
+                    this.$store.commit('inviteX', res.data.inviter_code_x || "");
+                    this.$store.commit('inviteY', res.data.inviter_code_y || "");
+                    this.$store.commit('gmex_uid', res.data.gmex_uid || "");
+                    this.$store.commit('gmex_pwd', res.data.gmex_phrase_pwd || "");
+                    this.$store.commit('gmex_phrase', res.data.gmex_phrase || []);
+                }).catch(e => {
+                    console.log(e.message);
+                    this.loginState = false;
+                    this.$store.commit('usdt_erc20', "");
+                    this.$store.commit('usdt_omni', "");
+                    this.$store.commit('lock_asset', "");
+                    this.$store.commit('btcDepositAddress', "");
+                    this.$store.commit('inviteServe', "");
+                    this.$store.commit('invite', "");
+                    this.$store.commit('inviteX',  "");
+                    this.$store.commit('inviteY', "");
+                    this.$store.commit('gmex_uid', "");
+                    this.$store.commit('gmex_phrase', []);
+                    this.$store.commit('gmex_pwd', "");
+                    // setTimeout(getAddressInfo, timeOut);
+                });
+            },
             getData (){
                 this.axios({
                     url : "/service/wk_info",
@@ -295,6 +344,15 @@
         height: 200px;
         margin-top: 15px;
         width: 100%;
+    }
+    .load{
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 99999;
+        left: 0;
+        top: 0;
+        background: rgba(0,0,0,0.3);
     }
     // xm start
     .market-menu{

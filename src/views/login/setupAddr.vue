@@ -73,7 +73,8 @@
                         }).then(res => {
                             this.submitState = false;
                             this.$toast.show(this.$t('bmat2'));
-                            console.log(res);
+                            // console.log(res);
+                            this.$router.push('/home');
                         }).catch(e => {
                             console.log(e.message);
                             this.account.accounts = {
