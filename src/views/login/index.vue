@@ -11,12 +11,19 @@
                         class="setup-addr"
                         width="73.3%"
                         @comfirm="$router.push({path: '/setupAddr'})"/> -->
-                <r-button
+                <r-button v-if="gmex_uid"
                         :text="$t('bmat1')"
                         bgColor="linear-gradient(270deg,rgba(103,192,216,1) 0%,rgba(26,99,164,1) 100%)"
                         class="export-addr"
                         width="73.3%"
                         @comfirm="$router.push({path: '/setupAddr'})"/>
+                <r-button v-else
+                        :text="$t('bmat4')"
+                        bgColor="linear-gradient(270deg,rgba(103,192,216,1) 0%,rgba(26,99,164,1) 100%)"
+                        class="export-addr"
+                        width="73.3%"
+                          @comfirm="errorlogin"
+                />
                 <!-- <div class="tips">
                     <label @click="select">
                         <i :class="{'active': isAllow}"></i>
@@ -46,6 +53,9 @@
             }
         },
         methods: {
+            errorlogin (){
+                location.href = 'http://gs.gmex.io:9480/m/#/';
+            },
             select(){
                 this.isAllow = !this.isAllow
             },

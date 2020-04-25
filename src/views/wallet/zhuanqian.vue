@@ -132,6 +132,7 @@
         },
         methods: {
             addressV (){
+                return;
                 if(this.address.length){
                     if(this.rcp.api.isValidAddress(this.address)){
                         this.span = false;

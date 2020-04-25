@@ -159,7 +159,7 @@ plusReady(function () {
     rcp.connected = upData;
 
     getPrice();
-    getAddressInfo();
+    // getAddressInfo();
     getBase();
     
 });
@@ -167,11 +167,6 @@ plusReady(function () {
 function upData(ledger) {
     // console.log(ledger);
 
-    if(ledger && ledger.transactionCount <= 0) {
-        if( rcp.address == account.getAddress()){
-            return;
-        }
-    };
     rcp.address = account.getAddress();
     getPrice();
     // getAddressInfo();
@@ -180,6 +175,9 @@ function upData(ledger) {
     // console.log(rcp.option);
     Store.commit('connected', true);
 
+    if(rcp.address == ''){
+        return;
+    }
     rcp.getBalances().then(data => {
         // console.log(data);
         var coinVolume = [];
