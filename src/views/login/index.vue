@@ -54,7 +54,7 @@
         },
         methods: {
             errorlogin (){
-                location.href = 'http://gs.gmex.io:9480/m/#/';
+                location.href = 'https://bmaclub.com/m/#/';
             },
             select(){
                 this.isAllow = !this.isAllow

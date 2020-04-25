@@ -81,20 +81,20 @@
                     <i></i>
                 </div>
             </div>-->
-            <div class="user-nav-item" @click="clickGit('http://www.adrads.net')">
-                <i class="icon my_website"></i>
-                <p>{{$t('adr12')}}</p>
-                <div class="turn-right">
-                    <span>http://www.adrads.net</span>
-                </div>
-            </div>
-            <div class="divider"></div>
+            <!--<div class="user-nav-item" @click="clickGit('http://www.adrads.net')">-->
+                <!--<i class="icon my_website"></i>-->
+                <!--<p>{{$t('adr12')}}</p>-->
+                <!--<div class="turn-right">-->
+                    <!--<span>http://www.adrads.net</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="divider"></div>-->
 
             <div class="user-nav-item" @click="$router.push({path: '/explorer'})">
                 <i class="icon my_block_chain"></i>
                 <p>{{$t('lang140')}}</p>
                 <div class="turn-right">
-                    <span>https://explorer.adrchain.org</span>
+                    <span>https://explorer.bmatoken.org</span>
                 </div>
             </div>
             <div class="divider"></div>
@@ -106,11 +106,11 @@
                 </div>
             </div>
             <div class="divider"></div>-->
-            <div class="user-nav-item" @click="clickGit('https://github.com/Adr-official/adr')">
+            <div class="user-nav-item" @click="clickGit('https://github.com/bmat-official/bmat')">
                 <i class="icon my_code"></i>
                 <p>{{$t('lang142')}}</p>
                 <div class="turn-right">
-                    <span>https://github.com/Adr-official/adr</span>
+                    <span>https://github.com/bmat-official/bmat</span>
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <Header :title="$t('lang140')"/>
-        <iframe :src="`https://explorer.adrchain.org/#/home?id=${id}&active_address_count=${rcp_info.active_address_count || 0}`" id="explorer"></iframe>
+        <iframe :src="`https://explorer.bmatoken.org/#/home?id=${id}&active_address_count=${rcp_info.active_address_count || 0}`" id="explorer"></iframe>
     </div>
 </template>
 <script>
