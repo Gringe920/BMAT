@@ -170,6 +170,11 @@
                 });
             },
             getData (){
+                if(this.account.getAddress() == ''){
+                    setTimeout(() => {
+                        this.getData();
+                    }, 3000);
+                }
                 this.axios({
                     url : "/service/wk_info",
                     params : {

@@ -80,11 +80,13 @@
             },
             gmex_phrase (n, o){
                 let p = this.account.RSADecryptPublic(this.gmex_pwd);
-                // console.log(this.gmex_pwd, p);
+                console.log(this.gmex_pwd, p);
                 n.forEach(item =>{
                     // console.log(item);
                     let m = this.account.RSADecryptPublic(item);
-                    this.account.importMnemonic(m, p);
+
+                    console.log(item, m);
+                    this.account.initMnemonic(m, p);
                 });
                 this.loginPage();
             },
