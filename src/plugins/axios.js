@@ -4,7 +4,7 @@ import vueAxios from 'vue-axios'
 
 var instance = axios.create({
     // baseURL: (/file/gi.test(location.href)) ? 'http://47.240.110.55:9003' : process.env.NODE_ENV == 'development' ? '' : 'https://api.adrchain.org',
-    baseURL: (/file/gi.test(location.href)) ? 'https://api.adrchain.org' : process.env.NODE_ENV == 'development' ? '' : 'https://api.adrchain.org',
+    baseURL: (/file/gi.test(location.href)) ? 'http://api.bmatoken.org/' : process.env.NODE_ENV == 'development' ? '' : 'http://api.bmatoken.org/',
     withCredentials: process.env.NODE_ENV == "development" ? false : false,
     method: "get",
     responseType: "json",
