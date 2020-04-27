@@ -14,7 +14,7 @@
             <div class="mine-card-unactivated" v-else>
                 <div class="state">{{$t('lang105')}}</div>
                 <div class="statement">{{$t('lang106').replace(/210BMAT/gi, (item.min_chibi || 210) + unitCoin(coin))}}</div>
-                <span class="to-activate" @click="showActivatedModal">{{$t('lang107')}}</span>
+                <!--<span class="to-activate" @click="showActivatedModal">{{$t('lang107')}}</span>-->
             </div>
             <div class="mask"></div>
         </div>
