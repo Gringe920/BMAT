@@ -2,7 +2,7 @@
     <div class="container">
         <div class="content">
             <div class="logo">
-                <img src="../../assets/images/home_logo@2x.png" alt="">
+                <img src="../../assets/images/logo.png" alt="">
             </div>
             <div class="login-btn-group">
                 <!-- <r-button
@@ -76,7 +76,7 @@
         align-items: center;
         height: 100%;
         .logo{
-            width: 60%;
+            width: 90%;
             margin: 0 auto;
             padding-bottom: 73.3%;
             img{

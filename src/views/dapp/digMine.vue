@@ -13,7 +13,7 @@
             <!-- 未激活 -->
             <div class="mine-card-unactivated" v-else>
                 <div class="state">{{$t('lang105')}}</div>
-                <div class="statement">{{$t('lang106')}}</div>
+                <div class="statement">{{$t('lang106').replace(/210BMAT/gi, (item.min_chibi || 210) + unitCoin(coin))}}</div>
                 <span class="to-activate" @click="showActivatedModal">{{$t('lang107')}}</span>
             </div>
             <div class="mask"></div>
@@ -38,32 +38,6 @@
 
 
             <div class="x-calc-power calc-power-group">
-                <div class="power-item">
-                    <div class="power-item-name">{{$t('lang122')}}</div>
-                    <div class="power-item-value">{{item.x_power_base || 0}}</div>
-                </div>
-                <div class="divider"></div>
-                <div class="power-item">
-                    <div class="power-item-name">{{$t('lang123')}}</div>
-                    <div class="power-item-value">{{item.coin_age || 0}}</div>
-                </div>
-                <div class="divider"></div>
-                <div class="power-item">
-                    <div class="power-item-name">{{$t('lang124')}}</div>
-                    <div class="power-item-value">{{(item.x_coinage_bonus_power || 0)}}</div>
-                </div>
-                <!--<div class="divider"></div>-->
-                <!--<div class="power-item">-->
-                    <!--<div class="power-item-name">{{$t('lang125')}}</div>-->
-                    <!--<div class="power-item-value">{{(item.y_power_bonus_rate || 0) * 100}} %</div>-->
-
-                <!--</div>-->
-                <!--<div class="divider"></div>-->
-                <!--<div class="power-item">-->
-                    <!--<div class="power-item-name">{{$t('lang126')}}</div>-->
-                    <!--<div class="power-item-value">{{(item.y_power_bonus || 0)}}</div>-->
-                <!--</div>-->
-                <div class="divider"></div>
                 <div class="power-item">
                     <div class="power-item-name">{{$t('lang127')}}</div>
                     <div class="power-item-value">{{(item.x_power || 0)}}</div>
