@@ -23,26 +23,18 @@
 
             <div class="x-calc-power calc-power-group">
                 <div class="icon-subtitle">
-                    <span class="subtitle">{{$t('lang108')}}</span>
+                    <span class="subtitle">{{$t('bmat5')}}</span>
+                    <span class="subtitle">{{$t('lang111')}}</span>
                 </div>
                 <div class="divider"></div>
                 <div class="calc-power-row">
-                    <span class="cal-power-value">{{item.x_wk_achnum || 0}}</span>
-                </div>
-                <div class="divider"></div>
-                <div class="power-item">
-                    <div class="power-item-name">{{$t('lang109')}}</div>
-                    <div class="power-item-value">{{item.y_power || 0}}</div>
+                    <span class="cal-power-value">{{item.x_power || 0}}</span>
+                    <span class="cal-power-value">{{item.y_power || 0}}</span>
                 </div>
             </div>
 
 
             <div class="x-calc-power calc-power-group">
-                <div class="power-item">
-                    <div class="power-item-name">{{$t('lang127')}}</div>
-                    <div class="power-item-value">{{(item.x_power || 0)}}</div>
-                </div>
-                <div class="divider"></div>
                 <div class="power-item">
                     <div class="power-item-name">{{$t('adr10')}}</div>
                     <div class="power-item-value">{{(item.best_chibi || 0)}}</div>
@@ -87,7 +79,7 @@
                 myBarChart : null,
                 coinShow: false,
                 coinList: ['ETH', 'TRX', 'EOS', 'CSC'],
-                coin: 'ADR',
+                coin: 'XRP',
                 headColor: 'transparent'
             }
         },
@@ -321,6 +313,14 @@
                 box-shadow:0px 6px 10px 0px rgba(0,0,0,0.06);
             }
 
+            .x-calc-power{
+                overflow: hidden;
+                .icon-subtitle {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
             .icon-subtitle {
                 margin-bottom: 14px;
                 .icon {
@@ -345,10 +345,12 @@
                 }
 
                 .calc-power-row {
-                    margin: 18px 0;
+                    padding: 18px 0;
                     font-size: 24px;
                     font-weight: bold;
                     color: $active;
+                    display: flex;
+                    justify-content: space-between;
                 }
             }
 

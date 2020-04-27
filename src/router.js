@@ -88,7 +88,8 @@ const demo = () => import(/* webpackChunkName: "wallet" */ './views/wallet/demo.
 const convertAds = () => import(/* webpackChunkName: "wallet" */ './views/wallet/convertAds');
 const convertUsdt = () => import(/* webpackChunkName: "wallet" */ './views/wallet/convertUsdt');
 Vue.use(Router)
-export default new Router({
+
+let router = new Router({
     // mode: 'history',
     // base: process.env.BASE_URL,
     mode: (/file/gi.test(location.href)) ? 'hash' : process.env.NODE_ENV === 'production' ? 'hash' : 'history' ,
@@ -392,4 +393,21 @@ export default new Router({
             component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
         }
     ]
-})
+});
+
+// router.beforeResolve((to, from, next) => {
+//     // ...
+//     console.log(to.query);
+//     console.log(from.query);
+//     if(from.query.access_token){
+//         if(to.query.access_token){
+//
+//         }else{
+//             to.query.access_token = from.query.access_token;
+//             to.query.refresh_token = from.query.refresh_token;
+//         }
+//     }
+//     console.log(to);
+//     next();
+// })
+export default router;

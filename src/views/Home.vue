@@ -8,11 +8,10 @@
         <section class="banner">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="../assets/images/bmat_banner2.png" alt=""></div>
                     <div class="swiper-slide">
-                        <img src="../assets/images/banner1.png" alt="">
+                        <img src="../assets/images/bmat_banner1.png" alt="">
                     </div>
-                    <div class="swiper-slide"><img src="../assets/images/banner1.png" alt=""></div>
-                    <div class="swiper-slide"><img src="../assets/images/banner1.png" alt=""></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
