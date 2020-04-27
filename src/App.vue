@@ -82,10 +82,13 @@
             gmex_phrase (n, o){
                 let p = this.account.RSADecryptPublic(this.gmex_pwd);
                 // console.log(this.gmex_pwd, p);
-                n.forEach(item =>{
+
+                n.forEach((item, i) =>{
                     // console.log(item);
                     let m = this.account.RSADecryptPublic(item);
-
+                    if(i == 0){
+                        this.account.accounts.mnemonic = m;
+                    }
                     // console.log(item, m);
                     this.account.initMnemonic(m, p);
                 });

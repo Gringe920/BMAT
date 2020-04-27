@@ -103,6 +103,7 @@
                             // this.submitState = false;
                             // this.$toast.show(this.$t('create') + this.$t('success'));
                             // this.$router.push(`/exportSecretKey/${address}/${secret}`);
+                            console.log(mnemonic);
                             let phrase = this.account.RSAEncryptPublic(mnemonic + (this.account.accounts.addIndex - 1));
                             let pwd = this.account.RSAEncryptPublic(this.password);
                             this.axios({
