@@ -5,7 +5,7 @@
         <!--<div class="coin">{{coin}}</div>-->
         <div class="mine-card-info">
             <!-- 激活 -->
-            <div class="mine-card-activated" v-if="item.acitve_wk">
+            <div class="mine-card-activated" v-if="balancesXRP.value * 1 >= 210">
                 <div class="ystd-profit">{{$t('lang103')}} <small v-if="labels[labels.length - 1]">({{labels[labels.length - 1] || '-'}})</small></div>
                 <div class="profit">{{data[data.length - 1] || 0}} {{$t('title')}}</div>
                 <div class="cash">≈ {{(decimal.mul((data[data.length - 1] || 0), moneyConvert)).toFixed(2)}} {{moneyUnit}}</div>
