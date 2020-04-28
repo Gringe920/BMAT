@@ -66,9 +66,9 @@
             <canvas class="chart-7Day"></canvas>
         </div>
         <load v-if="gmex_uid == '' || loginState"></load>
-        <div class="load">
-            系统维护中
-        </div>
+        <!--<div class="load">-->
+            <!--系统维护中-->
+        <!--</div>-->
     </div>
 </template>
 

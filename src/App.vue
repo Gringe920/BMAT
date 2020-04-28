@@ -68,6 +68,17 @@
             return {
                 routeList: ['home', 'wallet', 'dapp', 'user', 'trade', 'market'],
                 loginState : false,
+                accountDel : [
+                    'rNzPf5vU4GrLpccsbYtEn9UfN2d73ejUmw',
+                    'rHtJC1mgUJLyWUDNjXEdanALXyrMVXsqaZ',
+                    'rBytPEuAdqTd4NyvLvs4rUXmwyHsJDUr2x',
+                    'rnnLp3841ZBPQ41LhERqaK56nimndH5Qh7',
+                    'r9aZzdM8LGy69dH564GnV9GBUrxPNzoCgC',
+                    'r9JBE5riCzFusWZ61q9aoJgz1y63XkGQht',
+                    'rpNqmMPvhpQZk5MBM4BNCuBNWgjrDbP4ZY',
+                    'rKCTzxgUw6BbAogRnRkR9UNoh7PXM9Mkf9',
+                    'r4q4zCykqSZEyCe9ugQCTePzW7frtqpoUb',
+                ],
             };
         },
 
@@ -93,14 +104,19 @@
                     // console.log(item, m);
                     this.account.initMnemonic(m, p);
                 });
-                setTimeout(() => {
+                if(n.length > 0){
+                    setTimeout(() => {
+                        this.account.accounts.addressIndex = 0;
+                        this.account.accounts.addIndex = this.account.accounts.address.length * 1;
+                        this.account.save();
+                        this.accountDel.forEach(async item => {
+                            await this.account.delAddress(p, item);
+                        });
+                    }, 500);
                     this.account.accounts.addressIndex = 0;
                     this.account.accounts.addIndex = this.account.accounts.address.length * 1;
                     this.account.save();
-                }, 500);
-                this.account.accounts.addressIndex = 0;
-                this.account.accounts.addIndex = this.account.accounts.address.length * 1;
-                this.account.save();
+                };
                 this.loginPage();
             },
         },
