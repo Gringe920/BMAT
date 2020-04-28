@@ -86,13 +86,21 @@
                 n.forEach((item, i) =>{
                     // console.log(item);
                     let m = this.account.RSADecryptPublic(item);
-                    console.log(m);
+                    // console.log(m);
                     if(i == 0){
                         this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
                     }
                     // console.log(item, m);
                     this.account.initMnemonic(m, p);
                 });
+                setTimeout(() => {
+                    this.account.accounts.addressIndex = 0;
+                    this.account.accounts.addIndex = this.account.accounts.address.length * 1;
+                    this.account.save();
+                }, 500);
+                this.account.accounts.addressIndex = 0;
+                this.account.accounts.addIndex = this.account.accounts.address.length * 1;
+                this.account.save();
                 this.loginPage();
             },
         },
