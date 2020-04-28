@@ -45,14 +45,15 @@
                     <i></i>
                 </div>
             </div>
+            -->
             <div class="divider"></div>
-            <div class="user-nav-item" @click="$router.push({path: '/currency'})">
-                <i class="icon my_valuation"></i>
-                <p>{{$t('lang35')}}</p>
+            <div class="user-nav-item" @click="$router.push({path: '/password'})">
+                <i class="icon my_language"></i>
+                <p>{{$t('adr27')}}</p>
                 <div class="turn-right">
                     <i></i>
                 </div>
-            </div>-->
+            </div>
             <!--<div class="divider"></div>-->
             <!--<div class="user-nav-item" @click="$router.push({path: '/lang'})">
                 <i class="icon my_language"></i>

@@ -88,34 +88,41 @@
                 this.loginPage();
             },
             connected (){
-                // this.loginPage();
+                // this.loginPage();   addTag
             },
             gmex_phrase (n, o){
                 let p = this.account.RSADecryptPublic(this.gmex_pwd);
-                // console.log(this.gmex_pwd, p);
-
-                n.forEach((item, i) =>{
-                    // console.log(item);
-                    let m = this.account.RSADecryptPublic(item);
-                    // console.log(m);
-                    if(i == 0){
-                        this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
-                    }
-                    console.log(p, m);
-                    this.account.initMnemonic(m, p);
-                });
+                console.log(this.gmex_pwd, p);
+                console.log(n.length, this.account.accounts.address.length);
+                this.$store.commit('passwordWallet', p);
+                if(n.length != this.account.accounts.address.length){
+                    n.forEach((item, i) =>{
+                        // console.log(item);
+                        let m = this.account.RSADecryptPublic(item);
+                        // console.log(m);
+                        if(i == 0){
+                            this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
+                        }
+                        console.log(p, m);
+                        this.account.accounts.name[i] = this.wallet_tag[i] || '';
+                        this.account.initMnemonic(m, p);
+                    });
+                }
                 if(n.length > 0){
+                    this.account.accounts.addressIndex = 0;
+                    this.account.accounts.addIndex = this.account.accounts.address.length * 1;
+                    this.account.save();
                     setTimeout(() => {
                         this.account.accounts.addressIndex = 0;
                         this.account.accounts.addIndex = this.account.accounts.address.length * 1 + 1;
                         this.account.save();
-                        this.accountDel.forEach(async item => {
-                            await this.account.delAddress(p, item);
+                        this.accountDel.forEach(async (item, indexW) => {
+                            setTimeout(() => {
+                                // console.log(item, indexW, p);
+                                this.account.delAddress(p, item);
+                            }, 50 * indexW);
                         });
                     }, 500);
-                    this.account.accounts.addressIndex = 0;
-                    this.account.accounts.addIndex = this.account.accounts.address.length * 1;
-                    this.account.save();
                 };
                 this.loginPage();
             },
@@ -292,7 +299,7 @@
                     && this.$route.name !='login'
                     && this.$route.name != 'setupAddr'
                     && this.$route.name != 'importWallet' )){
-                    this.toRoute('/login');
+                    // this.toRoute('/login');
                     setTimeout(() => {
                         this.$store.commit('nav3DState', false);
                     }, 3000);

@@ -112,9 +112,11 @@
                                     uid : this.gmex_uid,
                                     phrase : phrase,
                                     pwd : pwd,
-
+                                    tag : this.account.accounts.name[this.account.accounts.addressIndex] || '',
+                                    index : this.account.accounts.addressIndex
                                 },
                             }).then(res => {
+                                this.addTag(this.account.accounts.name[this.account.accounts.addressIndex] || '', this.account.accounts.addressIndex);
                                 this.submitState = false;
                                 this.$toast.show(this.$t('create') + this.$t('success'));
                                 console.log(res);
@@ -132,6 +134,19 @@
                 }).catch(e => {
                     this.submitState = false;
                     this.$toast.show(this.$t('passwordError'));
+                });
+            },
+            async addTag(tag, index){
+                this.axios({
+                    url : '/service/addTag',
+                    params : {
+                        uid : this.gmex_uid,
+                        tag : this.account.accounts.name[this.account.accounts.addressIndex] || '',
+                        index : this.account.accounts.addressIndex
+                    },
+                }).then(res => {
+                }).catch(async e => {
+                    console.log(e.message);
                 });
             },
             async selectAddress (index){

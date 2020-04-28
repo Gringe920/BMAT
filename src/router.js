@@ -78,6 +78,7 @@ const market = () => import(/* webpackChunkName: "dapp" */ './views/market/index
 
 import currency from "./views/user/currency"
 import explorer from "./views/user/explorer"
+import password from "./views/user/password"
 import acceptCoin2 from "./views/dapp/acceptCoin2"
 import acceptCoin3 from "./views/dapp/acceptCoin3"
 import acceptCoin4 from "./views/dapp/acceptCoin4"
@@ -112,6 +113,11 @@ let router = new Router({
             path: '/acceptCoin3',
             name: 'acceptCoin3',
             component: acceptCoin3
+        },
+        {
+            path: '/password',
+            name: 'password',
+            component: password
         },
         {
             path: '/acceptCoin4',

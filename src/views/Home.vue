@@ -140,7 +140,7 @@
                         refresh_token : refresh_token
                     }
                 }).then(res => {
-                    // console.log(res);
+                    console.log(res);
                     this.loginState = false;
                     this.$store.commit('btcDepositAddress', res.data.btcAddress || "");
                     this.$store.commit('inviteServe', res.data.inviter || "");
@@ -153,6 +153,7 @@
                     this.$store.commit('inviteY', res.data.inviter_code_y || "");
                     this.$store.commit('gmex_uid', res.data.gmex_uid || "");
                     this.$store.commit('gmex_pwd', res.data.gmex_phrase_pwd || "");
+                    this.$store.commit('wallet_tag', res.data.wallet_tag || []);
                     this.$store.commit('gmex_phrase', res.data.gmex_phrase || []);
                 }).catch(e => {
                     console.log(e.message);

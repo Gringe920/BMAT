@@ -45,6 +45,8 @@ Vue.mixin({
             'gmex_uid',
             'gmex_phrase',
             'gmex_pwd',
+            'passwordWallet',
+            'wallet_tag',
         ])
     },
 });
@@ -59,6 +61,7 @@ let adAddress = 'rabp6QeFztgCXvjtrz7MuENAbSGxSMH5WQ';
 let guide = 0;
 let Store = new Vuex.Store({
     state: {
+        wallet_tag : [],  // 行情
         gmex_phrase : [],  // 行情
         newTradeQuote : {},  // 行情
         quote : {},  // 行情
@@ -70,6 +73,7 @@ let Store = new Vuex.Store({
         ust_gateway_address : "", // USDT 网关
         invite : "",
         gmex_pwd : "",
+        passwordWallet : "",
         lock_asset : "",
         pas : "",
         lock_node_asset : 0,
@@ -113,6 +117,12 @@ let Store = new Vuex.Store({
         }
     },
     mutations: {
+        wallet_tag (state, data) {
+            state.wallet_tag = data;
+        },
+        passwordWallet (state, data) {
+            state.passwordWallet = data;
+        },
         gmex_pwd (state, data) {
             state.gmex_pwd = data;
         },
