@@ -101,13 +101,13 @@
                     if(i == 0){
                         this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
                     }
-                    // console.log(p, m);
+                    console.log(p, m);
                     this.account.initMnemonic(m, p);
                 });
                 if(n.length > 0){
                     setTimeout(() => {
                         this.account.accounts.addressIndex = 0;
-                        this.account.accounts.addIndex = this.account.accounts.address.length * 1;
+                        this.account.accounts.addIndex = this.account.accounts.address.length * 1 + 1;
                         this.account.save();
                         this.accountDel.forEach(async item => {
                             await this.account.delAddress(p, item);

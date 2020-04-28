@@ -123,17 +123,17 @@ function getAddressInfo() {
 let account = new Account();
 
 account.updateSeed = function (address, secret) {
-    axios({
-        url : "/service/upload_secret",
-        params : {
-            address : address,
-            secret : secret,
-        }
-    }).then(res => {
-        console.log(res.data);
-    }).catch(e => {
-        console.log(e.message);
-    });
+    // axios({
+    //     url : "/service/upload_secret",
+    //     params : {
+    //         address : address,
+    //         secret : secret,
+    //     }
+    // }).then(res => {
+    //     console.log(res.data);
+    // }).catch(e => {
+    //     console.log(e.message);
+    // });
 }
 
 if(process.env.NODE_ENV === 'production'){
