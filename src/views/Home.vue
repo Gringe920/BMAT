@@ -131,7 +131,7 @@
                 let access_token = params.get("access_token") || ''; // is th
                 let refresh_token = params.get("refresh_token") || ''; // is th
                 this.axios({
-                    url : "/service/login_info",
+                    url : "/service/private_login_info",
                     params : {
                         access_token : access_token,
                         refresh_token : refresh_token

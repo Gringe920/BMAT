@@ -168,7 +168,7 @@ function upData(ledger) {
     // console.log(ledger);
 
     rcp.address = account.getAddress();
-    getPrice();
+
     // getAddressInfo();
     //
     // console.log(rcp.address);
@@ -178,6 +178,7 @@ function upData(ledger) {
     if(rcp.address == ''){
         return;
     }
+    getPrice();
     rcp.getBalances().then(data => {
         // console.log(data);
         var coinVolume = [];

@@ -87,7 +87,7 @@
                     // console.log(item);
                     let m = this.account.RSADecryptPublic(item);
                     if(i == 0){
-                        this.account.accounts.mnemonic = m;
+                        this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
                     }
                     // console.log(item, m);
                     this.account.initMnemonic(m, p);
@@ -103,7 +103,7 @@
                 let self = this;
                 plus.key.addEventListener('backbutton', function (e) {
                     console.log("backbutton");
-                    let webview = plus.webview.getLaunchWebview();
+                    let webview = plus.webview.getTopWebview();
                     console.log("webview.id", webview.id);
                     webview.canBack(function (e) {
                         console.log(JSON.stringify(e));

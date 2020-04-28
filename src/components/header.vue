@@ -88,7 +88,7 @@
                     return;
                 }
                 if (typeof plus == "object") {
-                    let webview = plus.webview.getLaunchWebview();
+                    let webview = plus.webview.getTopWebview();
                     webview.back();
                 } else {
                     this.$router.go(-1);

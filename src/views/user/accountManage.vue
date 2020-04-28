@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <div class="account-import" @click="submitPsw" v-if="accountsList.length < 10">
+            <div class="account-import" @click="submitPsw">
                 {{$t('create') + $t('address')}}{{submitState ? '...' : ''}}
             </div>
 
