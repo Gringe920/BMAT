@@ -65,14 +65,14 @@
                 </div>
             </div>-->
             
-            <div class="divider"></div>
-            <div class="user-nav-item" @click="$router.push({path: '/accountManage'})">
-                <i class="icon my_account"></i>
-                <p>{{$t('accountManagement')}}</p>
-                <div class="turn-right">
-                    <i></i>
-                </div>
-            </div>
+            <!--<div class="divider"></div>-->
+            <!--<div class="user-nav-item" @click="$router.push({path: '/accountManage'})">-->
+                <!--<i class="icon my_account"></i>-->
+                <!--<p>{{$t('accountManagement')}}</p>-->
+                <!--<div class="turn-right">-->
+                    <!--<i></i>-->
+                <!--</div>-->
+            <!--</div>-->
             <div class="divider"></div>
 <!--            <div class="user-nav-item" @click="$router.push({path: '/changeSecurePsw'})">
                 <i class="icon my_lock"></i>
