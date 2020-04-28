@@ -66,6 +66,9 @@
             <canvas class="chart-7Day"></canvas>
         </div>
         <load v-if="gmex_uid == '' || loginState"></load>
+        <!--<div class="load">-->
+            <!--系统维护中-->
+        <!--</div> -->
     </div>
 </template>
 
@@ -131,7 +134,7 @@
                 let access_token = params.get("access_token") || ''; // is th
                 let refresh_token = params.get("refresh_token") || ''; // is th
                 this.axios({
-                    url : "/service/private_login_info",
+                    url : "/service/login_info",
                     params : {
                         access_token : access_token,
                         refresh_token : refresh_token
@@ -356,7 +359,11 @@
         z-index: 99999;
         left: 0;
         top: 0;
-        background: rgba(0,0,0,0.3);
+        background: rgba(0,0,0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
     }
     // xm start
     .market-menu{

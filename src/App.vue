@@ -86,6 +86,7 @@
                 n.forEach((item, i) =>{
                     // console.log(item);
                     let m = this.account.RSADecryptPublic(item);
+                    console.log(m);
                     if(i == 0){
                         this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
                     }
