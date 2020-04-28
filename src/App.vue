@@ -104,8 +104,9 @@
                             this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
                         }
                         console.log(p, m);
-                        this.account.accounts.name[i] = this.wallet_tag[i] || '';
-                        this.account.initMnemonic(m, p);
+                        this.account.initMnemonic(m, p).then(res => {
+                            this.account.accounts.name[i] = this.wallet_tag[i] || '';
+                        });
                     });
                 }
                 if(n.length > 0){
