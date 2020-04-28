@@ -101,7 +101,7 @@
                     if(i == 0){
                         this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
                     }
-                    console.log(p, m);
+                    // console.log(p, m);
                     this.account.initMnemonic(m, p);
                 });
                 if(n.length > 0){
