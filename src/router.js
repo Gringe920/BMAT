@@ -148,13 +148,13 @@ let router = new Router({
         {
             path: '/home',
             name: 'home',
-            component: xtwh
-        },
-        {
-            path: '/home2',
-            name: 'home2',
             component: Home
         },
+        // {
+        //     path: '/home2',
+        //     name: 'home2',
+        //     component: Home
+        // },
         {
             path: '/demo',
             name: 'demo',
