@@ -100,6 +100,7 @@
                     this.account.accounts.mnemonic = "";
                     this.account.accounts.gmex_uid = this.gmex_uid;
                     this.account.accounts.address = [];
+                    this.account.accounts.name = [];
                     this.account.accounts.privateKey = [];
                     this.account.accounts.addressIndex = 0;
                 }
@@ -114,9 +115,11 @@
                         if(i == 0){
                             this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
                         }
-                        console.log(p, m);
+                        // console.log(p, m);
                         this.account.initMnemonic(m, p).then(res => {
-                            
+                            console.log(res);
+                        }).catch(e => {
+                            console.log(e);
                         });
                     });
                 }
