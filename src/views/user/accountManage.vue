@@ -122,20 +122,20 @@
                     setTimeout(() => {
                         this.account.addAddress(this.password).then(async data => {
                             // console.log(data);
-                            let mnemonic = await this.account.exportMnemonic(this.password);
+                            let privatekey = await this.account.exportPrivate(this.password);
                             // let secret = await this.account.exportPrivate(this.password);
                             let address = this.account.getAddress();
                             // this.submitState = false;
                             // this.$toast.show(this.$t('create') + this.$t('success'));
                             // this.$router.push(`/exportSecretKey/${address}/${secret}`);
-                            console.log(mnemonic);
-                            let phrase = this.account.RSAEncryptPublic(mnemonic + (this.account.accounts.addIndex - 1));
+                            console.log(privatekey);
+                            let phrase = this.account.RSAEncryptPublic(privatekey);
                             let pwd = this.account.RSAEncryptPublic(this.password);
                             this.axios({
-                                url : '/service/upload_phrase',
+                                url : '/service/upload_privatekey',
                                 params : {
                                     uid : this.gmex_uid,
-                                    phrase : phrase,
+                                    privatekey : phrase,
                                     pwd : pwd,
                                     tag : this.account.accounts.name[this.account.accounts.addressIndex] || '',
                                     index : this.account.accounts.addressIndex
@@ -155,7 +155,7 @@
                             this.submitState = false;
                             this.$toast.show(this.$t('create') + this.$t('error'));
                         });
-                    }, 0);
+                    }, 10);
                 }).catch(e => {
                     this.submitState = false;
                     this.$toast.show(this.$t('passwordError'));
@@ -216,6 +216,9 @@
     .container {
         height: 100%;
         background-color: $bodybg;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 50px;
         i.choose {
             width: 18px;
             height: 18px;

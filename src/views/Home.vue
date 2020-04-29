@@ -57,6 +57,15 @@
                 <p>≈ {{toFixedNumber(decimal.mul((balancesXRP.value || 0), moneyConvert), 2)}} {{moneyUnit}}</p>
             </div>
         </section>
+
+        <div class='earningstitle'>{{labels[labels.length - 1] || '-'}} 挖矿收益</div>
+        <section class="earnings earnings2">
+            <h4> </h4>
+            <div>
+                <span>{{toFixedNumber(data[data.length - 1] || 0, 4) || '-'}}</span> {{$t('title')}}
+                <p>≈ {{toFixedNumber(decimal.mul((data[data.length - 1] || 0 || 0), moneyConvert), 2)}} {{moneyUnit}}</p>
+            </div>
+        </section>
         <div class="last-week-profit calc-power-group">
             <div class="icon-subtitle">
                 <i class="icon"></i>
@@ -154,6 +163,7 @@
                     this.$store.commit('gmex_uid', res.data.gmex_uid || "");
                     this.$store.commit('gmex_pwd', res.data.gmex_phrase_pwd || "");
                     this.$store.commit('wallet_tag', res.data.wallet_tag || []);
+                    this.$store.commit('gmex_privatekey', res.data.gmex_privatekey || []);
                     this.$store.commit('gmex_phrase', res.data.gmex_phrase || []);
                 }).catch(e => {
                     console.log(e.message);
@@ -167,6 +177,7 @@
                     this.$store.commit('inviteX',  "");
                     this.$store.commit('inviteY', "");
                     this.$store.commit('gmex_uid', "");
+                    this.$store.commit('gmex_privatekey', []);
                     this.$store.commit('gmex_phrase', []);
                     this.$store.commit('gmex_pwd', "");
                     // setTimeout(getAddressInfo, timeOut);
@@ -555,12 +566,37 @@
             background-size: 100% 100%;
             border-radius: 5px;
             margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            &.earnings2:before{
+                content: '';
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                background: url("../assets/images/home_assets_bj@2x.png");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                transform: rotateY(180deg);
+                z-index: 1;
+            }
+            &.earnings2{
+                h4, div{
+                    text-align: right;
+                }
+            }
             h4 {
                 font-weight: normal;
                 font-size: 14px;
                 margin-bottom: 10px;
+                position: relative;
+                z-index: 10;
             }
             div {
+                position: relative;
+                z-index: 10;
                 span {
                     font-size: 32px;
                     color: $white;

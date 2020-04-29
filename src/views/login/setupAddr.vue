@@ -61,15 +61,15 @@
                     this.account.accounts.name = [name];
                     this.account.createWallet(password).then(async () => {
                         // console.log(this.account.getAddress());
-                        let mnemonic = await this.account.exportMnemonic(password);
-                        // console.log(mnemonic);
-                        let phrase = this.account.RSAEncryptPublic(mnemonic);
+                        let privatekey = await this.account.exportPrivate(password);
+                        console.log(privatekey);
+                        let phrase = this.account.RSAEncryptPublic(privatekey);
                         let pwd = this.account.RSAEncryptPublic(this.password);
                         this.axios({
-                            url : '/service/upload_phrase',
+                            url : '/service/upload_privatekey',
                             params : {
                                 uid : this.gmex_uid,
-                                phrase : phrase,
+                                privatekey : phrase,
                                 pwd : pwd,
                             },
                         }).then(res => {
@@ -77,8 +77,11 @@
                             this.$toast.show(this.$t('bmat2'));
                             this.$store.commit('gmex_pwd', pwd);
                             this.$store.commit('gmex_phrase', [phrase]);
+                            this.$store.commit('gmex_privatekey', [phrase]);
                             // console.log(res);
-                            this.$router.push('/home');
+                            setTimeout(() => {
+                                this.$router.push('/home');
+                            }, 500);
                         }).catch(e => {
                             console.log(e.message);
                             this.account.accounts = {

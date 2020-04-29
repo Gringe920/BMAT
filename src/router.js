@@ -85,6 +85,7 @@ import acceptCoin4 from "./views/dapp/acceptCoin4"
 import detais2 from "./views/dapp/detais2"
 import Issued from "./views/dapp/issued"
 import invteRecord from "./views/invite/invteRecord"
+import xtwh from "./views/error"
 const demo = () => import(/* webpackChunkName: "wallet" */ './views/wallet/demo.vue');
 const convertAds = () => import(/* webpackChunkName: "wallet" */ './views/wallet/convertAds');
 const convertUsdt = () => import(/* webpackChunkName: "wallet" */ './views/wallet/convertUsdt');
@@ -147,6 +148,11 @@ let router = new Router({
         {
             path: '/home',
             name: 'home',
+            component: xtwh
+        },
+        {
+            path: '/home2',
+            name: 'home2',
             component: Home
         },
         {

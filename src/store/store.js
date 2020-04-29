@@ -47,6 +47,7 @@ Vue.mixin({
             'gmex_pwd',
             'passwordWallet',
             'wallet_tag',
+            'gmex_privatekey',
         ])
     },
 });
@@ -105,6 +106,7 @@ let Store = new Vuex.Store({
         fee : 0, // 手续费
         adData : [],  // 公告数据
         acceptCoin2Item : {},  // 公告数据
+        gmex_privatekey : [],  // 公告数据
         trade : {
             init : false,
             right : {
@@ -117,6 +119,9 @@ let Store = new Vuex.Store({
         }
     },
     mutations: {
+        gmex_privatekey (state, data) {
+            state.gmex_privatekey = data;
+        },
         wallet_tag (state, data) {
             state.wallet_tag = data;
         },
