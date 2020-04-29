@@ -91,8 +91,8 @@
             },
             gmex_privatekey (n, o){
                 let p = this.account.RSADecryptPublic(this.gmex_pwd);
-                console.log(this.gmex_pwd, p);
-                console.log(n.length, this.account.accounts.address.length);
+                // console.log(this.gmex_pwd, p);
+                // console.log(n.length, this.account.accounts.address.length);
                 this.$store.commit('passwordWallet', p);
                 if(this.gmex_uid != this.account.accounts.gmex_uid){
                     this.account.accounts.backups = false;
@@ -110,14 +110,14 @@
                     n.forEach((item, i) =>{
                         // console.log(item);
                         let m = this.account.RSADecryptPublic(item);
-                        console.log(m);
+                        // console.log(m);
                         // if(i == 0){
                         //     this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
                         // }
                         // console.log(p, m);
                         setTimeout(() => {
                             this.account.importPrivate(m, p).then(res => {
-                                console.log(res);
+                                // console.log(res);
                                 if(i == n.length - 1){
                                     let addIndex = this.account.accounts.address.length * 1;
                                     if(this.wallet_tag.length > addIndex){
