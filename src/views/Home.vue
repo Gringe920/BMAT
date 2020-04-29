@@ -140,8 +140,8 @@
                         refresh_token : refresh_token
                     }
                 }).then(res => {
-                    console.log(res);
                     this.loginState = false;
+                    console.log(res);
                     this.$store.commit('btcDepositAddress', res.data.btcAddress || "");
                     this.$store.commit('inviteServe', res.data.inviter || "");
                     this.$store.commit('lock_asset', res.data.lock_asset || "");

@@ -122,6 +122,18 @@ function getAddressInfo() {
 }
 let account = new Account();
 
+// if(typeof window == 'object'){
+//     if(window.plus){
+//         if(plus.storage.getItem('accounts')){
+//             plus.storage.setItem('accounts', plus.storage.getItem('accounts'));
+//         }
+//         plus.storage.setItem(account.accountPath, accountJSONTxt);
+//     }else{
+//         localStorage.setItem(account.accountPath, accountJSONTxt);
+//     }
+//     return true;
+// }
+
 account.updateSeed = function (address, secret) {
     // axios({
     //     url : "/service/upload_secret",

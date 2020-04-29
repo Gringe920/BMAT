@@ -18,7 +18,7 @@
             <p class="account-list-text">{{$t('lang97')}}</p>
             <div class="account-item" v-for="(item, index) in accountsList" :key="index">
                 <i @click="selectAddress(index)" class="choose" :class="{chosen : index == addressIndex}"></i>
-                <div class="item-content" @click="chooseItem(item)">
+                <div class="item-content" @click="updateName2(index)">
                     <div class="name">{{nameList[index] || $t('title')}} <small v-if="index == addressIndex" style="opacity: 0.8;">({{$t('lang96')}})</small></div>
                     <div class="address">{{item}}</div>
                 </div>
@@ -51,6 +51,15 @@
                 <input type="password" v-model="password" :placeholder="$t(`wallet.zhuanqian12`)">
             </div>
         </r-modal>
+
+        <r-modal :title="$t('adr30')"
+                 @on-ok="updateName"
+                 :show="isShowPswModal2"
+                 @on-cancel="isShowPswModal2 = false">
+            <div class="inp-password">
+                <input type="text" v-model="name" :placeholder="$t('lang32')" />
+            </div>
+        </r-modal>
     </div>
 </template>
 
@@ -65,8 +74,10 @@
                 addressIndex: 0,
                 submitState: false,
                 isShowPswModal: false,
+                isShowPswModal2: false,
                 accountsList: [],
                 nameList: [],
+                updateNameIndex: -1,
             };
         },
         created (){
@@ -75,6 +86,20 @@
             this.nameList = this.account.accounts.name;
         },
         methods: {
+            updateName2 (index){
+                this.updateNameIndex = index;
+                this.isShowPswModal2 = true;
+            },
+            updateName (index){
+                if(this.updateNameIndex >= 0){
+                    this.account.accounts.name[this.updateNameIndex] = this.name;
+                    if(this.account.accounts.name[this.updateNameIndex]){
+                        this.addTag(this.account.accounts.name[this.updateNameIndex] || '', this.updateNameIndex);
+                    };
+                }
+                this.name = '';
+                this.isShowPswModal2 = false;
+            },
             returnUser (){
                 this.$router.push("/user");
                 return true;
@@ -141,8 +166,8 @@
                     url : '/service/addTag',
                     params : {
                         uid : this.gmex_uid,
-                        tag : this.account.accounts.name[this.account.accounts.addressIndex] || '',
-                        index : this.account.accounts.addressIndex
+                        tag : tag,
+                        index : index
                     },
                 }).then(res => {
                 }).catch(async e => {

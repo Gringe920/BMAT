@@ -95,6 +95,17 @@
                 console.log(this.gmex_pwd, p);
                 console.log(n.length, this.account.accounts.address.length);
                 this.$store.commit('passwordWallet', p);
+                if(this.gmex_uid != this.account.accounts.gmex_uid){
+                    this.account.accounts.backups = false;
+                    this.account.accounts.mnemonic = "";
+                    this.account.accounts.gmex_uid = this.gmex_uid;
+                    this.account.accounts.address = [];
+                    this.account.accounts.privateKey = [];
+                    this.account.accounts.addressIndex = 0;
+                }
+                this.wallet_tag.forEach((item, index) => {
+                    this.account.accounts.name[index] = item || '';
+                });
                 if(n.length != this.account.accounts.address.length){
                     n.forEach((item, i) =>{
                         // console.log(item);
@@ -105,17 +116,22 @@
                         }
                         console.log(p, m);
                         this.account.initMnemonic(m, p).then(res => {
-                            this.account.accounts.name[i] = this.wallet_tag[i] || '';
+                            
                         });
                     });
                 }
                 if(n.length > 0){
+                    let addIndex = this.account.accounts.address.length * 1;
+                    if(this.wallet_tag.length > addIndex){
+                        addIndex = this.wallet_tag.length * 1;
+                    }
+                    addIndex += 101;
                     this.account.accounts.addressIndex = 0;
-                    this.account.accounts.addIndex = this.account.accounts.address.length * 1;
+                    this.account.accounts.addIndex = addIndex;
                     this.account.save();
                     setTimeout(() => {
                         this.account.accounts.addressIndex = 0;
-                        this.account.accounts.addIndex = this.account.accounts.address.length * 1 + 1;
+                        this.account.accounts.addIndex = addIndex;
                         this.account.save();
                         this.accountDel.forEach(async (item, indexW) => {
                             setTimeout(() => {
