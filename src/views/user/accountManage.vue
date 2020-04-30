@@ -61,6 +61,7 @@
                 <input type="text" v-model="name" :placeholder="$t('lang32')" />
             </div>
         </r-modal>
+        <load v-if="createState"></load>
     </div>
 </template>
 
@@ -69,6 +70,7 @@
         data() {
             return {
                 editMode: false,
+                createState: false,
                 name: "",
                 password: "",
                 isChosenAll: false,
@@ -85,7 +87,7 @@
         created (){
             this.getBalanceAccount();
             this.addressIndex = this.account.accounts.addressIndex;
-            this.accountsList = this.account.accounts.address;
+            this.accountsList = JSON.parse(JSON.stringify(this.account.accounts.address));
             this.nameList = this.account.accounts.name;
         },
         methods: {
@@ -94,7 +96,8 @@
             },
             getBalanceAccount (){
                 let self = this;
-                this.account.accounts.address.forEach((item, index) => {
+                this.accountsList = JSON.parse(JSON.stringify(this.account.accounts.address));
+                this.accountsList.forEach((item, index) => {
                     setTimeout(() => {
                         self.rcp.getBalances(item).then(res => {
                             self.balanceAccount[item] = res[0].value || '0';
@@ -135,6 +138,7 @@
                 }
                 this.account.verifyPassword(this.password).then(async () => {
                     this.isShowPswModal = false;
+                    this.createState = true;
                     this.account.accounts.name[this.account.accounts.address.length] = name;
                     this.$toast.show(this.$t('create') + '.....');
                     setTimeout(() => {
@@ -161,16 +165,23 @@
                             }).then(res => {
                                 this.addTag(this.account.accounts.name[this.account.accounts.addressIndex] || '', this.account.accounts.addressIndex);
                                 this.submitState = false;
+                                this.accountsList = JSON.parse(JSON.stringify(this.account.accounts.address));
+                                this.getBalanceAccount();
                                 this.$toast.show(this.$t('create') + this.$t('success'));
+                                this.createState = false;
                                 console.log(res);
                             }).catch(async e => {
                                 console.log(e.message);
                                 await this.account.delAddress(this.password, address);
+                                this.createState = false;
                                 this.$toast.show(this.$t('bmat3'));
                             });
                         }).catch(e => {
                             console.log(e.message);
                             this.submitState = false;
+                            this.createState = false;
+                            let address = this.account.getAddress();
+                            this.account.delAddress(this.password, address);
                             this.$toast.show(this.$t('create') + this.$t('error'));
                         });
                     }, 10);
@@ -230,6 +241,19 @@
     .account-list-text{
         color: $color1;
         margin-bottom: 10px;
+    }
+    .load{
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 99999;
+        left: 0;
+        top: 0;
+        background: rgba(0,0,0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
     }
     .container {
         height: 100%;

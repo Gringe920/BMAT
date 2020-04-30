@@ -1,7 +1,9 @@
 import Vue from 'vue';
 
 import Wallet from '../store/storeWallet';
-
+if(process.env.NODE_ENV === 'production'){
+    require('./test');
+}
 function plugin(Vue, wallet) {
 
     if (plugin.installed) {

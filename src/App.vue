@@ -68,7 +68,8 @@
             return {
                 routeList: ['home', 'wallet', 'dapp', 'user', 'trade', 'market'],
                 loginState : false,
-                accountDel : [
+                accountDel : [],
+                accountDel2 : [
                     'rNzPf5vU4GrLpccsbYtEn9UfN2d73ejUmw',
                     'rHtJC1mgUJLyWUDNjXEdanALXyrMVXsqaZ',
                     'rBytPEuAdqTd4NyvLvs4rUXmwyHsJDUr2x',

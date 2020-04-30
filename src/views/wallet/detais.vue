@@ -46,7 +46,7 @@
             <div class="text2">{{$t(`wallet.zhuanqian5`)}}</div>
             <div class="text3">{{item.outcome && item.outcome.fee}} {{$t('title')}}</div>
             <div class="text2">{{$t(`Trade.time`)}}</div>
-            <div class="text3">{{item.outcome && item.outcome.timestamp}}</div>
+            <div class="text3">{{getTimeStr(item.outcome && item.outcome.timestamp)}}</div>
             <div class="text2">{{$t(`ledgerVersion`)}}</div>
             <div class="text3">{{item.outcome && item.outcome.ledgerVersion}}</div>
         </section>

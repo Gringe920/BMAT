@@ -11,6 +11,12 @@ Vue.mixin({
         }
     },
     methods: {
+
+        getTimeStr (tiem){
+            let date = new Date(tiem);
+            // console.log(date.toLocaleTimeString());
+            return (date.getFullYear()) + '/' +(date.getMonth() + 1) + '/' + (date.getDate()) + ' ' + (date.getHours()) + ':' + (date.getMinutes()) + ':' + (date.getSeconds())
+        },
         transactionTypeText (item){
             if(item.type == 'trustline'){
                 return this.$t('trust') + this.$t('gateway');
