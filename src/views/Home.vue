@@ -223,8 +223,8 @@
                             labels: this.labels,
                             datasets: [
                                 {
-                                    borderColor : "#00FF00",
-                                    backgroundColor : "#00FF00",
+                                    borderColor : "#1A63A4",
+                                    backgroundColor : "#1A63A4",
                                     data: this.data,
                                     fill: false,
                                     borderWidth: 1,

@@ -13,13 +13,14 @@
           :left-icon="require('../../assets/images/top_off_white@2x.png')"
           :left-ev="openEdit"
         /> -->
-        <Header :title="$t('user.accountTitle')"  />
+        <Header :title="$t('user.accountTitle')" :rightEv='submitPsw' righttext="创建地址" />
         <div class="account-list">
             <p class="account-list-text">{{$t('lang97')}}</p>
-            <div class="account-item" v-for="(item, index) in accountsList" :key="index">
+            <div class="account-item" v-for="(item, index) in accountsList" :key="index" v-if="item">
                 <i @click="selectAddress(index)" class="choose" :class="{chosen : index == addressIndex}"></i>
-                <div class="item-content" @click="updateName2(index)">
-                    <div class="name">{{nameList[index] || $t('title')}} <small v-if="index == addressIndex" style="opacity: 0.8;">({{$t('lang96')}})</small></div>
+                <div class="item-content" >
+                    <div class="name" @click="updateName2(index)">{{nameList[index] || $t('title')}} <small v-if="index == addressIndex" style="opacity: 0.8;">({{$t('lang96')}})</small></div>
+                    <div class="name yue">{{balanceAccount[item] || '-'}} BMAT</div>
                     <div class="address">{{item}}</div>
                 </div>
             </div>
@@ -77,15 +78,32 @@
                 isShowPswModal2: false,
                 accountsList: [],
                 nameList: [],
+                balanceAccount: {},
                 updateNameIndex: -1,
             };
         },
         created (){
+            this.getBalanceAccount();
             this.addressIndex = this.account.accounts.addressIndex;
             this.accountsList = this.account.accounts.address;
             this.nameList = this.account.accounts.name;
         },
         methods: {
+            getBalance (address){
+                return this.balanceAccount[address] || 0;
+            },
+            getBalanceAccount (){
+                let self = this;
+                this.account.accounts.address.forEach((item, index) => {
+                    setTimeout(() => {
+                        self.rcp.getBalances(item).then(res => {
+                            self.balanceAccount[item] = res[0].value || '0';
+                            // console.log(self.balanceAccount);
+                            self.accountsList.push('');
+                        })
+                    }, index * 150);
+                });
+            },
             updateName2 (index){
                 this.updateNameIndex = index;
                 this.isShowPswModal2 = true;
@@ -244,6 +262,7 @@
                 align-items: center;
                 overflow: hidden;
                 box-shadow:0px 6px 10px 0px rgba(0,0,0,0.06);
+
                 .item-content{
                     overflow: hidden;
                 }
@@ -253,6 +272,9 @@
                 .name {
                     font-size: 14px;
                     color: $active;
+                    &.yue{
+                        color: $blue;
+                    }
                 }
                 .address {
                     color: $color1;

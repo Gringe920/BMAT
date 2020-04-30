@@ -29,8 +29,8 @@
                     <i></i>
                 </div>
             </div>-->
-            <!--<div class="divider"></div>
-            <div class="user-nav-item" @click="$router.push({path: '/invite'})">
+            <div class="divider"></div>
+            <div class="user-nav-item" @click="$router.push({path: '/invteRecord'})">
                 <i class="icon my_account"></i>
                 <p>{{$t('inviteTitle')}}</p>
                 <div class="turn-right">
@@ -38,6 +38,7 @@
                 </div>
             </div>
             <div class="divider"></div>
+            <!--<div class="divider"></div>
             <div class="user-nav-item" @click="$router.push({path: '/download'})">
                 <i class="icon my_share"></i>
                 <p>{{$t('shareAPP')}}</p>
@@ -45,8 +46,7 @@
                     <i></i>
                 </div>
             </div>
-            -->
-            <div class="divider"></div>
+            <div class="divider"></div>-->
             <div class="user-nav-item" @click="$router.push({path: '/password'})">
                 <i class="icon my_language"></i>
                 <p>{{$t('adr27')}}</p>
@@ -65,7 +65,7 @@
                     <i></i>
                 </div>
             </div>-->
-            
+
             <div class="divider"></div>
             <div class="user-nav-item" @click="$router.push({path: '/accountManage'})">
                 <i class="icon my_account"></i>
@@ -193,7 +193,7 @@ export default {
                 width: 100%;
                 border-radius: 100%;
             }
-            
+
         }
         .info{
             .name{
@@ -217,7 +217,7 @@ export default {
             align-items: center;
             padding: 15px 0;
             position: relative;
-            
+
             i.icon{
                 display: inline-block;
                 width: 22px;

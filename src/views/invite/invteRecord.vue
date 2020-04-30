@@ -10,7 +10,7 @@
             <load v-if="loadState"></load>
             <empty v-if="loadState == false && (0 == activeIdx && listX.length <=0 ? true : 1 == activeIdx && listY.length <=0 ? true : false)"></empty>
             <div class="zhuan" v-for="item in (activeIdx == 0 ? listX : listY)" :key="item.id">
-                <div class="top">
+                <div class="top" v-if="item.create_time">
                     <img src="../../assets/images/night_record_time@2x.png" alt srcset />
                     {{item.create_time}}
                 </div>
@@ -108,6 +108,7 @@
         .zhuaninfo {
             /*margin-top :50px;*/
             border-top: solid 1px $border;
+            padding-top: 50px;
             .zhuan {
                 color: $color1;
                 padding: 15px;
