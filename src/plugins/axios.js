@@ -4,13 +4,18 @@ import vueAxios from 'vue-axios'
 
 var instance = axios.create({
     // baseURL: (/file/gi.test(location.href)) ? 'http://47.240.110.55:9003' : process.env.NODE_ENV == 'development' ? '' : 'https://api.adrchain.org',
-    baseURL: (/file/gi.test(location.href)) ? 'http://api.bmatoken.org/' : process.env.NODE_ENV == 'development' ? '' : 'http://api.bmatoken.org/',
+    baseURL: (/file/gi.test(location.href)) ? 'http://api.bmatoken.org' : process.env.NODE_ENV == 'development' ? '' : 'http://api.bmatoken.org',
     withCredentials: process.env.NODE_ENV == "development" ? false : false,
     method: "get",
     responseType: "json",
     timeout: 10000,
     headers: {}
 });
+
+
+if(typeof location == 'object' && /https/.test(location.href)){
+    instance.defaults.baseURL = 'https://api.bmatoken.org';
+}
 
 instance.defaults.headers.post["Content-Type"] = "application/json; charset=UTF-8";
 instance.interceptors.request.use(function (config) {

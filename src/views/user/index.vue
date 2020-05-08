@@ -30,6 +30,42 @@
                 </div>
             </div>-->
             <div class="divider"></div>
+            <div class="user-nav-item">
+                <p>{{$t('bmat6')}}</p>
+                <div class="turn-right">
+                    <span style="color: #1A63A4">{{wallet_count || '-'}}</span>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="user-nav-item" @click="$router.push({path: '/cbsl/y_rank'})">
+                <p>{{$t('y_rank')}}</p>
+                <div class="turn-right">
+                    <i></i>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="user-nav-item" @click="$router.push({path: '/cbsl/y_profit_rank'})">
+                <p>{{$t('y_profit_rank')}}</p>
+                <div class="turn-right">
+                    <i></i>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="user-nav-item" @click="$router.push({path: '/cbsl/x_rank'})">
+                <p>{{$t('x_rank')}}</p>
+                <div class="turn-right">
+                    <i></i>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="user-nav-item" @click="$router.push({path: '/cbsl/x_profit_rank'})">
+                <p>{{$t('x_profit_rank')}}</p>
+                <div class="turn-right">
+                    <i></i>
+                </div>
+            </div>
+            <div class="divider"></div>
             <div class="user-nav-item" @click="$router.push({path: '/invteRecord'})">
                 <i class="icon my_account"></i>
                 <p>{{$t('inviteTitle')}}</p>
@@ -116,14 +152,14 @@
             </div>
 
             <div class="divider"></div>
-            <div class="user-nav-item">
-                <i class="icon my_l"></i>
-                <p>{{$t('versions')}}</p>
-                <div class="turn-right">
-                    <span>{{version}}</span>
-                </div>
-            </div>
-            <div class="divider"></div>
+            <!--<div class="user-nav-item">-->
+                <!--<i class="icon my_l"></i>-->
+                <!--<p>{{$t('versions')}}</p>-->
+                <!--<div class="turn-right">-->
+                    <!--<span>{{version}}</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="divider"></div>-->
         </div>
 <!--        <r-modal title="激活地址"
              @on-ok="submit"
@@ -141,7 +177,8 @@ export default {
     data(){
         return{
             isShowModal: false,
-            version: ''
+            version: '',
+            wallet_count: '',
         }
     },
     created (){
@@ -150,8 +187,21 @@ export default {
         }else{
             this.version = '1.0.0'
         }
+        this.getChildren();
     },
     methods: {
+        getChildren (){
+            this.axios({
+                url : "/service/rankboard",
+                params : {
+                    // address : this.account.getAddress()
+                }
+            }).then(data => {
+                // console.log(data);
+                this.wallet_count = data.data.wallet_count || '-';
+            }).catch(e => {
+            })
+        },
         clickInvite (){
             if(this.invite.length){
                 this.$router.push('/acceptCoin3');

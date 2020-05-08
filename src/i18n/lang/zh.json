@@ -396,6 +396,17 @@
   "bmat3" : "创建钱包失败",
   "bmat4" : "交易所授权登录失败",
   "bmat5" : "持币总算力",
+  "bmat6" : "矿池钱包总数",
+
+  "y_rank" : "推广算力排行榜",
+  "x_profit_rank" : "持币收益排行榜",
+  "x_rank" : "持币算力排行榜",
+  "y_profit_rank" : "推广收益排行榜",
+
+  "y_rank_text" : "推广算力",
+  "x_profit_rank_text" : "持币收益",
+  "x_rank_text" : "持币算力",
+  "y_profit_rank_text" : "推广收益",
 
 
   "-" : "-"

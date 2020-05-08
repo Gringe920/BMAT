@@ -85,6 +85,7 @@ import acceptCoin4 from "./views/dapp/acceptCoin4"
 import detais2 from "./views/dapp/detais2"
 import Issued from "./views/dapp/issued"
 import invteRecord from "./views/invite/invteRecord"
+import cbsl from "./views/invite/cbsl"
 import xtwh from "./views/error"
 const demo = () => import(/* webpackChunkName: "wallet" */ './views/wallet/demo.vue');
 const convertAds = () => import(/* webpackChunkName: "wallet" */ './views/wallet/convertAds');
@@ -114,6 +115,12 @@ let router = new Router({
             path: '/acceptCoin3',
             name: 'acceptCoin3',
             component: acceptCoin3
+        },
+        {
+            path: '/cbsl/:type',
+            name: 'cbsl',
+            component: cbsl,
+            props : true,
         },
         {
             path: '/password',
