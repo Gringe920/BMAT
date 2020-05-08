@@ -402,7 +402,9 @@
   "x_profit_rank" : "持币收益排行榜",
   "x_rank" : "持币算力排行榜",
   "y_profit_rank" : "推广收益排行榜",
+  "total_profit_rank" : "累计收益排行榜",
 
+  "total_profit_rank_text" : "累计收益",
   "y_rank_text" : "推广算力",
   "x_profit_rank_text" : "持币收益",
   "x_rank_text" : "持币算力",

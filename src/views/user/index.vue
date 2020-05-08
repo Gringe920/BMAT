@@ -37,6 +37,13 @@
                 </div>
             </div>
             <div class="divider"></div>
+            <div class="user-nav-item" @click="$router.push({path: '/cbsl/total_profit_rank'})">
+                <p>{{$t('total_profit_rank')}}</p>
+                <div class="turn-right">
+                    <i></i>
+                </div>
+            </div>
+            <div class="divider"></div>
             <div class="user-nav-item" @click="$router.push({path: '/cbsl/y_rank'})">
                 <p>{{$t('y_rank')}}</p>
                 <div class="turn-right">

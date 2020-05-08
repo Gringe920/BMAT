@@ -14,7 +14,9 @@
                     <div>
                         {{$t(type + '_text')}}：
                         {{
-                            type == 'y_profit_rank'
+                            type == 'total_profit_rank'
+                        ? item.total_profit
+                        :type == 'y_profit_rank'
                         ? item.total_y_profit
                         : type == 'x_profit_rank'
                         ? item.total_x_profit
