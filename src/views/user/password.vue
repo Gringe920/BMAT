@@ -46,6 +46,7 @@
                     console.log(res);
                     this.submitState = false;
                     this.account.accounts = accounts;
+                    this.$store.commit('passwordWallet', this.password);
                     this.account.save();
                     this.$toast.show(this.$t('adr28'));
                     this.reply();

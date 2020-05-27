@@ -95,7 +95,7 @@
                 // console.log(this.gmex_pwd, p);
                 // console.log(n.length, this.account.accounts.address.length);
                 this.$store.commit('passwordWallet', p);
-                if(this.gmex_uid != this.account.accounts.gmex_uid){
+                // if(this.gmex_uid != this.account.accounts.gmex_uid){
                     this.account.accounts.backups = false;
                     this.account.accounts.mnemonic = "";
                     this.account.accounts.gmex_uid = this.gmex_uid;
@@ -103,29 +103,24 @@
                     this.account.accounts.name = [];
                     this.account.accounts.privateKey = [];
                     this.account.accounts.addressIndex = 0;
-                }
+                // }
                 this.wallet_tag.forEach((item, index) => {
                     this.account.accounts.name[index] = item || '';
                 });
-                if(n.length != this.account.accounts.address.length){
+                // if(n.length != this.account.accounts.address.length){
                     n.forEach((item, i) =>{
                         // console.log(item);
                         let m = this.account.RSADecryptPublic(item);
-                        // console.log(m);
-                        // if(i == 0){
-                        //     this.account.accounts.mnemonic = this.account.AESEncrypt(m, p);
-                        // }
-                        // console.log(p, m);
                         setTimeout(() => {
                             this.account.importPrivate(m, p).then(res => {
                                 // console.log(res);
+                                this.account.accounts.addressIndex = 0;
                                 if(i == n.length - 1){
                                     let addIndex = this.account.accounts.address.length * 1;
                                     if(this.wallet_tag.length > addIndex){
                                         addIndex = this.wallet_tag.length * 1;
                                     }
-                                    addIndex += 101;
-                                    this.account.accounts.addressIndex = 0;
+                                    addIndex += 1001;
                                     this.account.accounts.addIndex = addIndex;
                                     console.log('addIndex', addIndex);
                                     this.account.save();
@@ -135,13 +130,13 @@
                             });
                         }, i * 30);
                     });
-                }
+                // }
                 if(n.length > 0){
                     let addIndex = this.account.accounts.address.length * 1;
                     if(this.wallet_tag.length > addIndex){
                         addIndex = this.wallet_tag.length * 1;
                     }
-                    addIndex += 101;
+                    addIndex += 1001;
                     this.account.accounts.addressIndex = 0;
                     this.account.accounts.addIndex = addIndex;
                     this.account.save();

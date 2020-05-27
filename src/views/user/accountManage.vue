@@ -150,7 +150,7 @@
                             // this.submitState = false;
                             // this.$toast.show(this.$t('create') + this.$t('success'));
                             // this.$router.push(`/exportSecretKey/${address}/${secret}`);
-                            console.log(privatekey);
+                            console.log(privatekey, address);
                             let phrase = this.account.RSAEncryptPublic(privatekey);
                             let pwd = this.account.RSAEncryptPublic(this.password);
                             this.axios({
