@@ -2,12 +2,13 @@
     <div class="home">
         <Header :title="$t(`home.home`)"
                 :leftEv="clickMy"
-                :leftIcon="require('../assets/images/my@2x(2).png')"
+                :leftIcon="require('../assets/images/user.png')"
                  ></Header>
 
         <section class="banner">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="../assets/images/banner.jpg" alt=""></div>
                     <div class="swiper-slide"><img src="../assets/images/bmat_banner2.png" alt=""></div>
                     <div class="swiper-slide">
                         <img src="../assets/images/bmat_banner1.png" alt="">

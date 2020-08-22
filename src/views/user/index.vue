@@ -4,7 +4,7 @@
         <div class="userinfo">
             <div class="avatar">
                 <!--<img src="../../assets/images/my_head@2x.png" alt="">-->
-                <img src="../../assets/logo.png" alt="">
+                <img src="../../assets/images/logo_user.png" alt="">
             </div>
             <div class="info">
                 <div class="name">{{account.accounts.name[account.accounts.addressIndex] || $t('title')}}</div>
